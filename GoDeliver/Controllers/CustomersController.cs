@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GoDeliver.DatabaseData;
 using GoDeliver.Models;
 using GoDeliver.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 
 namespace GoDeliver.Controllers
 {
- 
+    [Route("api/customers")]
     public class CustomersController : Controller
     {
         private InfoRepository _customerInfoRepository;
@@ -15,37 +16,26 @@ namespace GoDeliver.Controllers
             _customerInfoRepository = customerInfoRepository;
         }
 
-
-
-
-
         //GET api customers
-        [HttpGet("api/customers")]
+        [HttpGet()]
         public IActionResult GetCustomers()
         {
             var customerEntities = _customerInfoRepository.GetCustomers();
-            var results = Mapper.Map<IEnumerable<CustomerDto>>(customerEntities);
+            //var results = Mapper.Map<IEnumerable<CustomerDto>>(customerEntities);
 
-            return Ok(results);
+            return Ok(customerEntities);
   
         }
 
         [HttpGet("{customerId}")]
-        public IActionResult GetCity(int customerId)
+        public IActionResult GetCustomer(int customerId)
         {
             var customer = _customerInfoRepository.GetCustomer(customerId);
-            var customerResult = Mapper.Map<CustomerDto>(customer);
-            return Ok(customerResult);
+          //  var customerResult = Mapper.Map<CustomerDto>(customer);
+            return Ok(customer);
         }
 
-        [HttpGet("api/foods")]
-        public IActionResult GetFoods()
-        {
-            var foodEntities = _customerInfoRepository.GetFoods();
-            //  var results = Mapper.Map<I>
-            return Ok("Placeholder");
-
-        }
+       
 
 
 

@@ -18,6 +18,8 @@ namespace GoDeliver.Services
 
         public IEnumerable<Customer> GetCustomers()
         {
+
+            
             return _context.Customers.OrderBy(c => c.Name).ToList();
         }
 
