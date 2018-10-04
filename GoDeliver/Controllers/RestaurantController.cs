@@ -35,7 +35,7 @@ namespace GoDeliver.Controllers
             return Ok(restaurantEntities);
         }
 
-
+        
 
 
 

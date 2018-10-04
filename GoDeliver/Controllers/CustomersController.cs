@@ -35,7 +35,47 @@ namespace GoDeliver.Controllers
             return Ok(customer);
         }
 
-       
+       [HttpPost("{customerId}")]
+       public IActionResult CreateCustomer(int customerId, [FromBody] CustomerForCreationDto customerInfo)
+       {
+
+            var customerError = "Please look at your data and make sure it's not incorrect, or has values that are the same!";
+
+            if (customerInfo == null)
+            {
+                return BadRequest();
+            }
+
+            if(customerInfo.Name == customerInfo.Adress || customerInfo.Name == customerInfo.MobileNr || customerInfo.MobileNr == customerInfo.Adress)
+            {
+                return BadRequest(customerError);
+            }
+
+            var customerFinal = customerInfo;
+            //   _customerInfoRepository.AddCustomer(customerId, );
+            
+            return CreatedAtRoute("GetCustomer",
+                new { customerId = customerId, id = customerFinal.CustomerId }, customerFinal);
+       }
+
+        [HttpDelete("{customerId}")]
+        public IActionResult DeleteCustomer(int customerId)
+        {
+
+            var customerEntity = _customerInfoRepository.GetCustomer(customerId);
+
+            if (customerEntity == null)
+            {
+                return NotFound();
+            }
+            
+            _customerInfoRepository.DeleteCustomer(customerEntity);
+            return NoContent();
+        }
+
+
+
+
 
 
 

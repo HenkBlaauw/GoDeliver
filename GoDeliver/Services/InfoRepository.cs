@@ -10,6 +10,8 @@ namespace GoDeliver.Services
     {
        IEnumerable<Customer> GetCustomers();
         Customer GetCustomer(int CustomerId);
+        void AddCustomer(int customerId, Customer customer);
+        void DeleteCustomer(Customer customer);
 
         IEnumerable<Food> GetFoods();
         Food GetFood(int FoodId);

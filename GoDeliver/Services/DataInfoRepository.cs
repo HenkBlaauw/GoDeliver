@@ -49,5 +49,15 @@ namespace GoDeliver.Services
         {
             return _context.Restaurants.Where(c => c.RestaurantId == restaurantId).FirstOrDefault();
         }
+
+        public void AddCustomer(int customerId, Customer customer)
+        {
+            var currentCustomer = GetCustomer(customerId);
+        }
+
+        public void DeleteCustomer(Customer customer)
+        {
+            _context.Customers.Remove(customer);
+        }
     }
 }
