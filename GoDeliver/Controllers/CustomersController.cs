@@ -35,7 +35,7 @@ namespace GoDeliver.Controllers
             return Ok(customer);
         }
 
-       [HttpPost("{customerId}")]
+       [HttpPost()]
        public IActionResult CreateCustomer(int customerId, [FromBody] CustomerForCreationDto customerInfo)
        {
 
@@ -58,6 +58,8 @@ namespace GoDeliver.Controllers
                 new { customerId = customerId, id = customerFinal.CustomerId }, customerFinal);
        }
 
+
+        //Delete a customer              (Still buggy)
         [HttpDelete("{customerId}")]
         public IActionResult DeleteCustomer(int customerId)
         {
@@ -70,7 +72,8 @@ namespace GoDeliver.Controllers
             }
             
             _customerInfoRepository.DeleteCustomer(customerEntity);
-            return NoContent();
+            return Ok(_customerInfoRepository.GetCustomers());
+            
         }
 
 
