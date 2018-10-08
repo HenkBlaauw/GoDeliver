@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using GoDeliver.DatabaseData;
+using GoDeliver.Entities;
 using GoDeliver.Models;
 using GoDeliver.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 
 namespace GoDeliver.Controllers
@@ -18,6 +20,7 @@ namespace GoDeliver.Controllers
 
         //GET api customers
         [HttpGet()]
+        
         public IActionResult GetCustomers()
         {
             var customerEntities = _customerInfoRepository.GetCustomers();
@@ -35,34 +38,44 @@ namespace GoDeliver.Controllers
             return Ok(customer);
         }
 
-       [HttpPost()]
-       public IActionResult CreateCustomer(int customerId, [FromBody] CustomerForCreationDto customerInfo)
+       [HttpPost()] 
+       public IActionResult CreateCustomer([FromBody]CustomerForCreationDto customerInfo)
        {
-
-            var customerError = "Please look at your data and make sure it's not incorrect, or has values that are the same!";
+           
+            var customerError = "Please look at your data and make sure it's not empty, incorrect, or has values that are the same!";
+            Customer customer = new Customer();
 
             if (customerInfo == null)
-            {
-                return BadRequest();
-            }
-
-            if(customerInfo.Name == customerInfo.Adress || customerInfo.Name == customerInfo.MobileNr || customerInfo.MobileNr == customerInfo.Adress)
             {
                 return BadRequest(customerError);
             }
 
-            var customerFinal = customerInfo;
-            //   _customerInfoRepository.AddCustomer(customerId, );
-            
-            return CreatedAtRoute("GetCustomer",
-                new { customerId = customerId, id = customerFinal.CustomerId }, customerFinal);
-       }
+            if (customerInfo.Name == customerInfo.Adress || customerInfo.Name == customerInfo.MobileNr || customerInfo.MobileNr == customerInfo.Adress)
+            {
+                return BadRequest(customerError);
+            }
+
+            // Convert CustomerForCreationDto to Customer entity
+            customer.Adress = customerInfo.Adress;
+            customer.Name = customerInfo.Name;
+            customer.MobileNr = customerInfo.MobileNr;
+            customer.CustomerId = customerInfo.CustomerId;
+            customer.CreatedAtDate = new DateTime(2011,01,01,12,12,12);
+            customer.UpdatedAtDate = customer.CreatedAtDate;
+
+            _customerInfoRepository.AddCustomer(customer);
+           
+
+            //  return CreatedAtRoute( routeName, routeValues);
+            //return CreatedAtRoute("GetCustomer", new { customerId = customer.CustomerId }, customer);
+            return Ok(customer);
+        }
 
 
-        //Delete a customer              (Still buggy)
-        [HttpDelete("{customerId}")]
-        public IActionResult DeleteCustomer(int customerId)
-        {
+       //Delete a customer              (Still buggy)
+       [HttpDelete("/{customerId}")]
+       public IActionResult DeleteCustomer([FromRoute]int customerId)
+       {
 
             var customerEntity = _customerInfoRepository.GetCustomer(customerId);
 
@@ -70,17 +83,12 @@ namespace GoDeliver.Controllers
             {
                 return NotFound();
             }
+
+            _customerInfoRepository.DeleteCustomer(_customerInfoRepository.GetCustomer(customerId));
             
-            _customerInfoRepository.DeleteCustomer(customerEntity);
+
             return Ok(_customerInfoRepository.GetCustomers());
             
-        }
-
-
-
-
-
-
-
+       }
     }
 }

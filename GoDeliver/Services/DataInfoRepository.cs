@@ -1,9 +1,6 @@
 ﻿using GoDeliver.Entities;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 
 namespace GoDeliver.Services
 {
@@ -18,8 +15,6 @@ namespace GoDeliver.Services
 
         public IEnumerable<Customer> GetCustomers()
         {
-
-            
             return _context.Customers.OrderBy(c => c.Name).ToList();
         }
 
@@ -60,9 +55,9 @@ namespace GoDeliver.Services
             _context.Customers.Remove(customer);
         }
 
-        public void AddFood(int foodId)
+        public void AddFood(Food food)
         {
-            throw new NotImplementedException();
+            _context.Foods.Add(food);
         }
 
         public IEnumerable<Driver> GetDrivers()
@@ -100,9 +95,9 @@ namespace GoDeliver.Services
             _context.Foods.Remove(food);
         }
 
-        public void AddRestaurant(int RestaurantId)
+        public void AddRestaurant(Restaurant restaurant)
         {
-            throw new NotImplementedException();
+            _context.Restaurants.Add(restaurant);
         }
 
         public void DeleteRestaurant(Restaurant restaurant)
@@ -110,9 +105,9 @@ namespace GoDeliver.Services
             _context.Restaurants.Remove(restaurant);
         }
 
-        public void AddDriver(int driverId)
+        public void AddDriver(Driver driver)
         {
-            throw new NotImplementedException();
+            _context.Drivers.Add(driver);
         }
 
         public void DeleteDriver(Driver driver)
@@ -120,9 +115,9 @@ namespace GoDeliver.Services
             _context.Drivers.Remove(driver);
         }
 
-        public void AddOrder(int orderId)
+        public void AddOrder(Order order)
         {
-            throw new NotImplementedException();
+            _context.Orders.Add(order);
         }
 
         public void DeleteOrder(Order order)
@@ -130,14 +125,19 @@ namespace GoDeliver.Services
             _context.Orders.Remove(order);
         }
 
-        public void AddOrderedFood(int orderId)
+        public void AddOrderedFood(OrderedFood orderedFood)
         {
-            throw new NotImplementedException();
+            _context.OrderedFoods.Add(orderedFood);
         }
 
         public void DeleteOrderedFood(OrderedFood orderedFood)
         {
            _context.OrderedFoods.Remove(orderedFood);
+        }
+
+        public bool Save()
+        {
+            return (_context.SaveChanges() >= 0);
         }
     }
 }
