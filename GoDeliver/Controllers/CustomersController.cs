@@ -100,5 +100,15 @@ namespace GoDeliver.Controllers
             return NoContent();
             
        }
+
+
+
+
+
+        [HttpPut("{customerId}")]
+        public IActionResult UpdateCustomer([FromRoute]int customerId)
+        {
+
+        }
     }
 }

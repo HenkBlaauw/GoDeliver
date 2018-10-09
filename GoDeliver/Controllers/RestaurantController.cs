@@ -6,7 +6,6 @@ using System;
 
 namespace GoDeliver.Controllers
 {
-
     [Route("api/restaurants")]
     public class RestaurantController : Controller
     {
@@ -18,14 +17,12 @@ namespace GoDeliver.Controllers
             _restaurantInfoRepository = restaurantInfoRepository;
         }
 
-
         [HttpGet()]
         public IActionResult GetRestaurants()
         {
             var restaurantEntities = _restaurantInfoRepository.GetRestaurants();
             return Ok(restaurantEntities);
         }
-
 
         [HttpGet("{restaurantId}")]
         public IActionResult GetRestaurant(int restaurantId)
@@ -67,10 +64,28 @@ namespace GoDeliver.Controllers
             }
 
             return Ok(restaurant);
-
-
         }
 
 
+        [HttpDelete("{restaurantId}")]
+        public IActionResult DeleteRestaurant([FromRoute]int restaurantId)
+        {
+            var restaurant = _restaurantInfoRepository.GetRestaurant(restaurantId);
+
+            if (restaurant == null)
+            {
+                return NotFound();
+            }
+
+            _restaurantInfoRepository.DeleteRestaurant(_restaurantInfoRepository.GetRestaurant(restaurantId));
+
+            if (!_restaurantInfoRepository.Save())
+            {
+                return StatusCode(500, "Something happened");
+            }
+
+            return NoContent();
+
+        }
     }
 }
