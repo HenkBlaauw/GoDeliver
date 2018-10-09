@@ -39,6 +39,9 @@ namespace GoDeliver.Services
         OrderedFood GetOrderedFood(int orderedFoodId);
         void AddOrderedFood(OrderedFood orderedFood);
         void DeleteOrderedFood(OrderedFood orderedFood);
+
+
+        bool Save();
         
     }
 }

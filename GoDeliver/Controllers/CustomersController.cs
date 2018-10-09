@@ -20,7 +20,6 @@ namespace GoDeliver.Controllers
 
         //GET api customers
         [HttpGet()]
-        
         public IActionResult GetCustomers()
         {
             var customerEntities = _customerInfoRepository.GetCustomers();
@@ -60,11 +59,16 @@ namespace GoDeliver.Controllers
             customer.Name = customerInfo.Name;
             customer.MobileNr = customerInfo.MobileNr;
             customer.CustomerId = customerInfo.CustomerId;
-            customer.CreatedAtDate = new DateTime(2011,01,01,12,12,12);
+            customer.CreatedAtDate = DateTime.Now;
             customer.UpdatedAtDate = customer.CreatedAtDate;
 
             _customerInfoRepository.AddCustomer(customer);
-           
+
+            if (!_customerInfoRepository.Save())
+            {
+                return StatusCode(500, "A problem happened while handling your request.");
+            }
+
 
             //  return CreatedAtRoute( routeName, routeValues);
             //return CreatedAtRoute("GetCustomer", new { customerId = customer.CustomerId }, customer);
@@ -72,8 +76,11 @@ namespace GoDeliver.Controllers
         }
 
 
-       //Delete a customer              (Still buggy)
-       [HttpDelete("/{customerId}")]
+       
+
+
+       //Delete a customer             
+       [HttpDelete("{customerId}")]
        public IActionResult DeleteCustomer([FromRoute]int customerId)
        {
 
@@ -86,8 +93,14 @@ namespace GoDeliver.Controllers
 
             _customerInfoRepository.DeleteCustomer(_customerInfoRepository.GetCustomer(customerId));
             
+            if (!_customerInfoRepository.Save())
+            {
+                return StatusCode(500, "A thing happened which caused the program to stop responding");
+            }
 
-            return Ok(_customerInfoRepository.GetCustomers());
+            
+
+            return NoContent();
             
        }
     }
