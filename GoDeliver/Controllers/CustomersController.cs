@@ -1,11 +1,8 @@
-﻿using AutoMapper;
-using GoDeliver.DatabaseData;
-using GoDeliver.Entities;
+﻿using GoDeliver.Entities;
 using GoDeliver.Models;
 using GoDeliver.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
 
 namespace GoDeliver.Controllers
 {
@@ -62,16 +59,18 @@ namespace GoDeliver.Controllers
             customer.CreatedAtDate = DateTime.Now;
             customer.UpdatedAtDate = customer.CreatedAtDate;
 
+            if (customer.MobileNr.Length > 10)
+            {
+                return BadRequest(customerError);
+            }
+
             _customerInfoRepository.AddCustomer(customer);
 
             if (!_customerInfoRepository.Save())
             {
                 return StatusCode(500, "A problem happened while handling your request.");
             }
-
-
-            //  return CreatedAtRoute( routeName, routeValues);
-            //return CreatedAtRoute("GetCustomer", new { customerId = customer.CustomerId }, customer);
+  
             return Ok(customer);
         }
 
@@ -97,8 +96,6 @@ namespace GoDeliver.Controllers
             {
                 return StatusCode(500, "A thing happened which caused the program to stop responding");
             }
-
-            
 
             return NoContent();
             

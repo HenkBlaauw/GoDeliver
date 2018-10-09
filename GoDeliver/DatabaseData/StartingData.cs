@@ -11,14 +11,14 @@ namespace GoDeliver.DatabaseData
 
         public static void EnsureSeedDataForContext(this GoDeliveryContext context)
         {
-            if (context.Customers.Any() && context.Foods.Any() && context.Restaurants.Any())
+            if (context.Customers.Any() && context.Foods.Any() && context.Restaurants.Any() && context.Orders.Any() && context.Drivers.Any())
             {
                 return;
             }
             
 
 
-                var customers = new List<Customer>
+            var customers = new List<Customer>
             {
 
                 new Customer()
@@ -66,7 +66,7 @@ namespace GoDeliver.DatabaseData
        
 
 
-                var foods = new List<Food>()
+            var foods = new List<Food>()
             {
 
                 new Food()
@@ -103,16 +103,16 @@ namespace GoDeliver.DatabaseData
                     UpdatedAtDate = new DateTime(2017, 02, 11, 19, 21,40, DateTimeKind.Local)
                 },
 
-                                                                            new Food()
-                                                                            {
-                                                                              //  FoodId = 4,
-                                                                                Name = "Hawaiian Meal",
-                                                                                Description = "A chicken burger with a pineapple ring",
-                                                                                Cost = 45,
-                                                                                RestaurantId = 1,
-                                                                                CreatedAtDate = new DateTime(2012, 04, 12, 10, 12, 20, DateTimeKind.Local),
-                                                                                UpdatedAtDate = new DateTime(2017, 02, 11, 18, 20, 11, DateTimeKind.Local)
-                                                                            },
+                new Food()
+                {
+                    //  FoodId = 4,
+                    Name = "Hawaiian Meal",
+                    Description = "A chicken burger with a pineapple ring",
+                    Cost = 45,
+                    RestaurantId = 1,
+                    CreatedAtDate = new DateTime(2012, 04, 12, 10, 12, 20, DateTimeKind.Local),
+                    UpdatedAtDate = new DateTime(2017, 02, 11, 18, 20, 11, DateTimeKind.Local)
+                },
 
                 new Food()
                 {
@@ -136,16 +136,16 @@ namespace GoDeliver.DatabaseData
                     UpdatedAtDate = new DateTime(2017, 02, 11, 09, 12, 22, DateTimeKind.Local)
                 },
 
-                                                        new Food()
-                                                        {
-                                                         // FoodId = 7,
-                                                            Name = "Chicken Salad",
-                                                            Description = "A chicken salad.",
-                                                            Cost = 45,
-                                                            RestaurantId = 3,
-                                                            CreatedAtDate = new DateTime(2012, 04, 12, 11, 18, 20, DateTimeKind.Local),
-                                                            UpdatedAtDate = new DateTime(2017, 02, 11, 18, 12, 22, DateTimeKind.Local)
-                                                        },
+                new Food()
+                {
+                    // FoodId = 7,
+                    Name = "Chicken Salad",
+                    Description = "A chicken salad.",
+                    Cost = 45,
+                    RestaurantId = 3,
+                    CreatedAtDate = new DateTime(2012, 04, 12, 11, 18, 20, DateTimeKind.Local),
+                    UpdatedAtDate = new DateTime(2017, 02, 11, 18, 12, 22, DateTimeKind.Local)
+                },
 
                 new Food(){
 
@@ -155,20 +155,9 @@ namespace GoDeliver.DatabaseData
                     RestaurantId = 2,
                     CreatedAtDate = new DateTime( 2013, 02, 01, 18, 20, 20, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime( 2018, 01, 11, 10, 22, 29, DateTimeKind.Local)
-
-
                 }
 
-
-
-
             };
-
-
-            //if (context.Restaurants.Any())
-            //{
-            //    return;
-            //}
 
             var restaurants = new List<Restaurant>()
                 {
@@ -223,13 +212,81 @@ namespace GoDeliver.DatabaseData
                         TelephoneNr = "0219720889",
                         CreatedAtDate = new DateTime(2006, 01, 18, 12, 52, 49, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2016, 08, 09, 07, 23, 11, DateTimeKind.Local)
+                    },
+
+                    new Restaurant()
+                    {
+                        Name = "Tikkaways",
+                        Adress = "Shop 68, N1 City",
+                        TelephoneNr = "0215950167",
+                        foods = new List<Food>()
+                        {
+
+                        },
+                        CreatedAtDate = new DateTime(2010, 02, 02, 00, 00, 00, DateTimeKind.Local),
+                        UpdatedAtDate = new DateTime(2012, 12, 12, 01, 01, 01, DateTimeKind.Local)
                     }
 
 
 
-                };
+            };
 
 
+            var drivers = new List<Driver>()
+            {
+                new Driver()
+                {
+                    Name = "Johnathan",
+                    CreatedAtDate = new DateTime(2008, 10, 28, 15, 12, 11, DateTimeKind.Local),
+                    UpdatedAtDate = new DateTime(2012, 11, 09, 17, 11, 20, DateTimeKind.Local)
+                },
+                
+                new Driver()
+                {
+                    Name = "Arnold",
+                    CreatedAtDate = new DateTime(2018, 08, 12, 17, 18, 10, DateTimeKind.Local),
+                    UpdatedAtDate = new DateTime(2018, 08, 12, 17, 18, 10, DateTimeKind.Local)
+                },
+
+                new Driver()
+                {
+                    Name = "Nathan",
+                    CreatedAtDate = new DateTime(2011, 09, 09, 13, 17, 20, DateTimeKind.Local),
+                    UpdatedAtDate = new DateTime(2014, 10, 11, 21, 18, 12, DateTimeKind.Local)
+                },
+
+                new Driver()
+                {
+                    Name = "Nelize",
+                    CreatedAtDate = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local),
+                    UpdatedAtDate = new DateTime(2015, 10, 11, 13, 12, 12, DateTimeKind.Local)
+                }
+
+            };
+
+            var orders = new List<Order>()
+            {
+                new Order()
+                {
+                    CustomerId = 2,
+                    DriverId = 2,
+                    RestaurantId = 1,
+                    Name = "Happy Meal",
+                    Description = "A kiddies meal!",
+                    Cost = 35,
+                    TimeAtRestaurant = new DateTime(2018, 10, 02, 16, 20,00, DateTimeKind.Local),
+                    TimePickedUp = new DateTime(2018, 10, 02, 16, 25, 00, DateTimeKind.Local),
+                    DeliveryTime = new DateTime(2018, 10, 02, 17, 00, 00, DateTimeKind.Local),
+                    State = "Delivered",
+                    CreatedAtDate = new DateTime(2018, 10, 02, 16, 00, 00, DateTimeKind.Local),
+                    UpdatedAtDate = new DateTime(2018, 10, 02, 17, 00, 00, DateTimeKind.Local)
+                }
+
+             
+            };
+
+                context.Orders.AddRange(orders);
+                context.Drivers.AddRange(drivers);
                 context.Restaurants.AddRange(restaurants);
                 context.Foods.AddRange(foods);
                 context.Customers.AddRange(customers);

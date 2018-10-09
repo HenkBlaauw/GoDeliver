@@ -9,7 +9,7 @@ namespace GoDeliver.Entities
 {
     public class Restaurant
     {
-
+        
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]

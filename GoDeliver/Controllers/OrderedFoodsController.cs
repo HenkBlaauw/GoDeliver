@@ -18,12 +18,10 @@ namespace GoDeliver.Controllers
             _orderedFoodRepository = orderedFoodRepository;
         }
 
-
         [HttpGet()]
         public IActionResult GetOrderedFoods()
         {
             var orderedEntities = _orderedFoodRepository.GetOrderedFoods();
-
             return Ok(orderedEntities);
         }
 
@@ -31,8 +29,6 @@ namespace GoDeliver.Controllers
         public IActionResult GetOrderedFood(int orderedFoodId)
         {
             var ordered = _orderedFoodRepository.GetOrderedFood(orderedFoodId);
-
-
             return Ok(ordered);
         }
 
