@@ -20,24 +20,22 @@ namespace GoDeliver.Controllers
         public IActionResult GetCustomers()
         {
             var customerEntities = _customerInfoRepository.GetCustomers();
-            //var results = Mapper.Map<IEnumerable<CustomerDto>>(customerEntities);
-
             return Ok(customerEntities);
-  
+
         }
 
         [HttpGet("{customerId}")]
         public IActionResult GetCustomer(int customerId)
         {
             var customer = _customerInfoRepository.GetCustomer(customerId);
-          //  var customerResult = Mapper.Map<CustomerDto>(customer);
+            //  var customerResult = Mapper.Map<CustomerDto>(customer);
             return Ok(customer);
         }
 
-       [HttpPost()] 
-       public IActionResult CreateCustomer([FromBody]CustomerForCreationDto customerInfo)
-       {
-           
+        [HttpPost()]
+        public IActionResult CreateCustomer([FromBody]CustomerForCreationDto customerInfo)
+        {
+
             var customerError = "Please look at your data and make sure it's not empty, incorrect, or has values that are the same!";
             Customer customer = new Customer();
 
@@ -70,18 +68,18 @@ namespace GoDeliver.Controllers
             {
                 return StatusCode(500, "A problem happened while handling your request.");
             }
-  
+
             return Ok(customer);
         }
 
 
-       
 
 
-       //Delete a customer             
-       [HttpDelete("{customerId}")]
-       public IActionResult DeleteCustomer([FromRoute]int customerId)
-       {
+
+        //Delete a customer             
+        [HttpDelete("{customerId}")]
+        public IActionResult DeleteCustomer([FromRoute]int customerId)
+        {
 
             var customerEntity = _customerInfoRepository.GetCustomer(customerId);
 
@@ -91,23 +89,65 @@ namespace GoDeliver.Controllers
             }
 
             _customerInfoRepository.DeleteCustomer(_customerInfoRepository.GetCustomer(customerId));
-            
+
             if (!_customerInfoRepository.Save())
             {
                 return StatusCode(500, "A thing happened which caused the program to stop responding");
             }
 
             return NoContent();
-            
-       }
+
+        }
 
 
 
 
 
         [HttpPut("{customerId}")]
-        public IActionResult UpdateCustomer([FromRoute]int customerId)
+        public IActionResult UpdateCustomer([FromRoute]int customerId,
+             [FromBody] CustomerForCreationDto customerEdit)
         {
+            var customerToEdit = _customerInfoRepository.GetCustomer(customerId);
+            Customer customer = new Customer();
+
+
+            if (customerToEdit == null)
+            {
+                return NotFound();
+            }
+
+            if (customerToEdit.Name != customerEdit.Name)
+            {
+                customerToEdit.Name = customerEdit.Name;
+            }
+
+            if (customerToEdit.MobileNr != customerEdit.MobileNr)
+            {
+                customerToEdit.MobileNr = customerEdit.MobileNr;
+            }
+
+            if (customerToEdit.Adress != customerEdit.Adress)
+            {
+                customerToEdit.Adress = customerEdit.Adress;
+            }
+
+            if (customerToEdit.CreatedAtDate != customerEdit.CreatedAtDate)
+            {
+                customerToEdit.CreatedAtDate = customerEdit.CreatedAtDate;
+            }
+
+            customerToEdit.UpdatedAtDate = DateTime.Now;
+
+            if (!_customerInfoRepository.Save())
+            {
+                return StatusCode(500, "A problem happened while handling your request.");
+            }
+
+
+
+
+            return Ok(customerToEdit);
+
 
         }
     }

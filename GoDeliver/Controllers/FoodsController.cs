@@ -96,6 +96,53 @@ namespace GoDeliver.Controllers
 
         }
 
+        [HttpPut("{foodId}")]
+        public IActionResult UpdateFood([FromRoute]int foodId, [FromBody] FoodForCreationDto foodEdit)
+        {
+            var foodToEdit = _foodInfoRepository.GetFood(foodId);
+
+            Food food = new Food();
+
+
+            if (foodToEdit.Name != foodEdit.Name)
+            {
+                foodToEdit.Name = foodEdit.Name;
+            }
+
+            if (foodToEdit.Description != foodEdit.Description)
+            {
+                foodToEdit.Description = foodToEdit.Description;
+            }
+
+            if (foodToEdit.Cost != foodEdit.Cost)
+            {
+                foodToEdit.Cost = foodEdit.Cost;
+            }
+
+            if (foodToEdit.RestaurantId != foodEdit.RestaurantId)
+            {
+                foodToEdit.RestaurantId = foodEdit.RestaurantId;
+            }
+
+            if (foodToEdit.CreatedAtDate != foodEdit.CreatedAtDate)
+            {
+                foodToEdit.CreatedAtDate = foodEdit.CreatedAtDate;
+            }
+
+            foodToEdit.UpdatedAtDate = DateTime.Now;
+
+            if (!_foodInfoRepository.Save())
+            {
+                return StatusCode(500, "A problem happened while handling your request.");
+            }
+
+            return Ok(foodToEdit);
+        }
+
+
+
+
+
 
     }
 }
