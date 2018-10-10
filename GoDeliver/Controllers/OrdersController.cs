@@ -43,7 +43,7 @@ namespace GoDeliver.Controllers
         {
             var orderError = "Please ensure your data is correct!";
             Order order = new Order();
-            
+
             if (orderInfo == null)
             {
                 return BadRequest(orderError);
@@ -98,7 +98,84 @@ namespace GoDeliver.Controllers
             return NoContent();
         }
 
+        [HttpPut("{orderId}")]
+        public IActionResult UpdateOrder([FromRoute] int orderId, [FromBody] OrderForCreationDto orderEdit)
+        {
+
+            var orderToEdit = _orderInfoRepository.GetOrder(orderId);
+
+            if (orderToEdit.Name != orderEdit.Name)
+            {
+                orderToEdit.Name = orderEdit.Name;
+            }
+
+            if (orderToEdit.Description != orderEdit.Description)
+            {
+                orderToEdit.Description = orderEdit.Description;
+            }
+
+            if (orderToEdit.CustomerId != orderEdit.CustomerId)
+            {
+                orderToEdit.CustomerId = orderEdit.CustomerId;
+            }
+
+            if (orderToEdit.DriverId != orderEdit.DriverId)
+            {
+                orderToEdit.DriverId = orderEdit.DriverId;
+            }
+
+            if (orderToEdit.RestaurantId != orderEdit.RestaurantId)
+            {
+                orderToEdit.RestaurantId = orderEdit.RestaurantId;
+            }
+
+            if (orderToEdit.State != orderEdit.State)
+            {
+                orderToEdit.State = orderEdit.State;
+            }
 
 
+            if (orderToEdit.Cost != orderEdit.Cost)
+            {
+                orderToEdit.Cost = orderEdit.Cost;
+            }
+
+            if (orderToEdit.TimeAtRestaurant != orderEdit.TimeAtRestaurant)
+            {
+                orderToEdit.TimeAtRestaurant = orderEdit.TimeAtRestaurant;
+            }
+
+            if (orderToEdit.TimePickedUp != orderEdit.TimePickedUp)
+            {
+                orderToEdit.TimePickedUp = orderEdit.TimePickedUp;
+            }
+
+
+            if (orderToEdit.DeliveryTime != orderEdit.DeliveryTime)
+            {
+                orderToEdit.DeliveryTime = orderEdit.DeliveryTime;
+            }
+
+
+            if (orderToEdit.CreatedAtDate != orderEdit.CreatedAtDate)
+            {
+                orderToEdit.CreatedAtDate = orderEdit.CreatedAtDate;
+            }
+
+
+
+            orderToEdit.UpdatedAtDate = DateTime.Now;
+
+
+
+            if (!_orderInfoRepository.Save())
+            {
+                return StatusCode(500, "A problem happened while handling your request.");
+            }
+
+
+            return Ok(orderToEdit);
+
+        }
     }
 }

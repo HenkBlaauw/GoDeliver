@@ -85,5 +85,38 @@ namespace GoDeliver.Controllers
 
 
 
+        [HttpPut("{driverId}")]
+        public IActionResult UpdateDriver([FromRoute]int driverId, [FromBody]DriverForCreationDto driverEdit)
+        {
+            var driverToEdit = _driverInfoRepository.GetDriver(driverId);
+            Driver driver = new Driver();
+
+            if (driverToEdit == null)
+            {
+                return NotFound();
+            }
+
+            if (driverToEdit.Name != driverEdit.Name)
+            {
+                driverToEdit.Name = driverEdit.Name;
+            }
+
+            if (driverToEdit.CreatedAtDate != driverEdit.CreatedAtDate)
+            {
+                driverToEdit.CreatedAtDate = driverEdit.CreatedAtDate;
+            }
+
+            driverToEdit.UpdatedAtDate = DateTime.Now;
+
+            if (!_driverInfoRepository.Save())
+            {
+                return StatusCode(500, "Internal Server Error, I am sorry to inform you!");
+            }
+
+            return Ok(driverToEdit);
+        }
+
+
+
     }
 }

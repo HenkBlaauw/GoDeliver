@@ -108,7 +108,7 @@ namespace GoDeliver.Controllers
              [FromBody] CustomerForCreationDto customerEdit)
         {
             var customerToEdit = _customerInfoRepository.GetCustomer(customerId);
-            Customer customer = new Customer();
+            
 
 
             if (customerToEdit == null)
