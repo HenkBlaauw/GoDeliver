@@ -1,0 +1,809 @@
+{
+	"info": {
+		"_postman_id": "a0c1bb7d-7fa4-4fe7-8df8-ddc571763d35",
+		"name": "GoDeliveryDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetCustomers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:1028/api/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"customers"
+					]
+				},
+				"description": "Get's Customers from Database"
+			},
+			"response": []
+		},
+		{
+			"name": "GetCustomer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/customers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"customers",
+						"1"
+					]
+				},
+				"description": "Get's a specific customer, depending on the CustomerId"
+			},
+			"response": []
+		},
+		{
+			"name": "CreateCustomer",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n    \"name\": \"Herald\",\n    \"adress\": \"11 Minala Street, Germany\",\n    \"mobileNr\": \"0718234567\"\n    \n    \n    }"
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteCustomer",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/customers/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"customers",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateCustomer",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \n    \"name\": \"Sarah - Updated\",\n    \"adress\": \"7 Miners Street, Maryland\",\n    \"mobileNr\": \"0711823212\",\n    \"createdAtDate\": \"2012-04-12T19:29:58\",\n    \"updatedAtDate\": \"2017-02-11T20:17:37\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/customers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"customers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PatchCustomer",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"name\": \"Jacques Rossouw\"\n        \n    }"
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/customers/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"customers",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetFoods",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:1028/api/foods",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"foods"
+					]
+				},
+				"description": "Get food from the Db\n"
+			},
+			"response": []
+		},
+		{
+			"name": "GetFood",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/foods",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"foods"
+					]
+				},
+				"description": "Gets food depending on the id you enter after the url\n"
+			},
+			"response": []
+		},
+		{
+			"name": "CreateFood",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n       \n        \"name\": \"Bunny Chow\",\n        \"description\": \"Half a bread with lamb curry.\",\n        \"cost\": 65,\n        \"restaurantId\": 5,\n        \"createdAtDate\": \"2013-02-01T18:20:20\",\n        \"updatedAtDate\": \"2018-01-11T10:22:29\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/foods",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"foods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteFood",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/foods/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"foods",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutFood",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \n        \"name\": \"Chicken Salad - Update\",\n        \"description\": \"A chicken salad. - Update\",\n        \"cost\": 45,\n        \"restaurantId\": 3,\n        \"createdAtDate\": \"2012-04-12T11:18:20\",\n        \"updatedAtDate\": \"2017-02-11T18:12:22\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/foods/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"foods",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PatchFoods",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \n        \"name\": \"Chicken Salad - Updated\"\n        \n    }"
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/foods/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"foods",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteFood",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/foods/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"foods",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrder",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/orders/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"orders",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"orderId\": 3,\n    \"customerId\": 4,\n    \"driverId\": 4,\n    \"restaurantId\": 2,\n    \"name\": \"Poodle meat\",\n    \"description\": \"A meal for monsters!\",\n    \"timeAtRestaurant\": \"2018-10-02T16:20:00\",\n    \"timePickedUp\": \"2018-10-02T16:25:00\",\n    \"deliveryTime\": \"2018-10-02T17:00:00\",\n    \"state\": \"Delivered\",\n    \"cost\": 16\n    \n}"
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/orders",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteOrder",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/orders/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"orders",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PatchOrder",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\" : \"Juice\"\n\t\n\t\n\t\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/orders/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"orders",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetDrivers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:1028/api/drivers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"drivers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateDriver",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\t{\n        \"name\" : \"Piet\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/drivers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"drivers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutDriver",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n    \"name\": \"Pieter - updated\",\n    \"createdAtDate\": \"2018-10-15T13:25:52.19081+02:00\"\n    \n}"
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/drivers/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"drivers",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PatchDriver",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Pieter - updated\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/drivers/0",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"drivers",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteDriver",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/drivers/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"drivers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrderedFoods",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/orderedfoods",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"orderedfoods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrderedFood",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/orderedfoods/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"orderedfoods",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostOrderedFood",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"OrderId\" : 2\n\t\n}"
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/orderedfoods",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"orderedfoods"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutOrderedFood",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"orderId\": 3,\n        \"createdAtDate\": \"2018-10-15T13:43:04.3087152\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/orderedfoods/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"orderedfoods",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteOrderedFood",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:1028/api/orderedfoods/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "1028",
+					"path": [
+						"api",
+						"orderedfoods",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
