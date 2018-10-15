@@ -1,6 +1,7 @@
 ﻿using GoDeliver.Entities;
 using GoDeliver.Models;
 using GoDeliver.Services;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -15,23 +16,37 @@ namespace GoDeliver.Controllers
             _customerInfoRepository = customerInfoRepository;
         }
 
-        //GET api customers
+        //Gets all customers
         [HttpGet()]
         public IActionResult GetCustomers()
         {
             var customerEntities = _customerInfoRepository.GetCustomers();
+
+            if (customerEntities == null)
+            {
+                return StatusCode(500, "Sorry, the database is empty!");
+            }
+
+
             return Ok(customerEntities);
 
         }
 
+        //Get a single customer
         [HttpGet("{customerId}")]
         public IActionResult GetCustomer(int customerId)
         {
             var customer = _customerInfoRepository.GetCustomer(customerId);
+            if (customer == null)
+            {
+                return StatusCode(500, "The customer is null and void, so i'm sorry, but we don't have this customer in the database");
+            }
+
             //  var customerResult = Mapper.Map<CustomerDto>(customer);
             return Ok(customer);
         }
 
+        //Creating a customer
         [HttpPost()]
         public IActionResult CreateCustomer([FromBody]CustomerForCreationDto customerInfo)
         {
@@ -51,9 +66,23 @@ namespace GoDeliver.Controllers
 
             // Convert CustomerForCreationDto to Customer entity
             customer.Adress = customerInfo.Adress;
+            if (customer.Adress.Length > 50)
+            {
+                return StatusCode(500, "Your adress is too long. Please make sure it's less than 50 characters!");
+            }
+
             customer.Name = customerInfo.Name;
+            if (customer.Name.Length > 50)
+            {
+                return StatusCode(500, "Your name is too long. Please ensure it's less than 50 characters long!");
+            }
+
             customer.MobileNr = customerInfo.MobileNr;
-            customer.CustomerId = customerInfo.CustomerId;
+            if (customer.MobileNr.Length > 10)
+            {
+                return StatusCode(500, "Your mobile number is too long. Please ensure it is shorter than 11 digits long!");
+            }
+
             customer.CreatedAtDate = DateTime.Now;
             customer.UpdatedAtDate = customer.CreatedAtDate;
 
@@ -99,56 +128,125 @@ namespace GoDeliver.Controllers
 
         }
 
-
-
-
-
+        //Editing a customer
         [HttpPut("{customerId}")]
-        public IActionResult UpdateCustomer([FromRoute]int customerId,
-             [FromBody] CustomerForCreationDto customerEdit)
+        public IActionResult UpdateCustomer([FromRoute]int customerId, [FromBody] CustomerForCreationDto customer)
         {
-            var customerToEdit = _customerInfoRepository.GetCustomer(customerId);
+
+                if (customer == null)
+                {
+                    return BadRequest();
+                }
+
+                var customerEntity = _customerInfoRepository.GetCustomer(customerId);
+
+                if (customerEntity == null)
+                {
+                    return NotFound();
+                }
+
+
+                if (customer.Name != null)
+                {
+                    customerEntity.Name = customer.Name;
+                }
+                if ( customer.Name.Length > 50)
+                {
+                    return StatusCode(500, "The name you entered is a tad bit too long....");
+                }
+                if (customer.MobileNr.Length > 10)
+                {
+                    return StatusCode(418, "Teapot error, go away. Actually your mobile number is just too long");
+                }
+                if (customer.Adress != null)
+                {
+                    customerEntity.Adress = customer.Adress;
+                }
+                if (customer.Adress.Length > 50)
+                {
+                    return StatusCode(500, "The adress is too long...............");
+                }
+
+                if (customer.MobileNr != null)
+                {
+                    customerEntity.MobileNr = customer.MobileNr;
+                }
+
+                if (customer.CreatedAtDate != null)
+                {
+                    customerEntity.CreatedAtDate = customer.CreatedAtDate;
+                }
+
+                customer.UpdatedAtDate = DateTime.Now;
+
+
+                if (!_customerInfoRepository.Save())
+                {
+                    return StatusCode(418, "Something happened maatjie. Ek is jammer, kyk na die tee pot, want jou data wil nie save nie");
+                }
+
+
+                return Ok(customerEntity);
+
             
+            
+        }
 
 
-            if (customerToEdit == null)
+        [HttpPatch("{customerId}")]
+        public IActionResult PartiallyUpdateCustomer([FromRoute]int customerId,
+            [FromBody]CustomerForCreationDto patchCustomer)
+        {
+
+            if (patchCustomer == null)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            if (customerToEdit.Name != customerEdit.Name)
+            var CustomerEntity = _customerInfoRepository.GetCustomer(customerId);
+
+            if (CustomerEntity == null)
             {
-                customerToEdit.Name = customerEdit.Name;
+                return StatusCode(500, "The customer you requested is not in the database");
             }
 
-            if (customerToEdit.MobileNr != customerEdit.MobileNr)
+            if (patchCustomer.Name != null)
             {
-                customerToEdit.MobileNr = customerEdit.MobileNr;
+                CustomerEntity.Name = patchCustomer.Name;
             }
 
-            if (customerToEdit.Adress != customerEdit.Adress)
+            if (patchCustomer.Adress != null)
             {
-                customerToEdit.Adress = customerEdit.Adress;
+                CustomerEntity.Adress = patchCustomer.Adress;
             }
 
-            if (customerToEdit.CreatedAtDate != customerEdit.CreatedAtDate)
+            if (patchCustomer.CreatedAtDate != null)
             {
-                customerToEdit.CreatedAtDate = customerEdit.CreatedAtDate;
+                CustomerEntity.CreatedAtDate = patchCustomer.CreatedAtDate;
             }
 
-            customerToEdit.UpdatedAtDate = DateTime.Now;
+            if (patchCustomer.MobileNr != null)
+            {
+                CustomerEntity.MobileNr = patchCustomer.MobileNr;
+            }
+
+
+            CustomerEntity.UpdatedAtDate = DateTime.Now;
+
 
             if (!_customerInfoRepository.Save())
             {
-                return StatusCode(500, "A problem happened while handling your request.");
+                return StatusCode(500, "SOmething happened while handling your request");
             }
 
 
-
-
-            return Ok(customerToEdit);
+            return Ok(CustomerEntity);
 
 
         }
+
+
+
+
     }
 }

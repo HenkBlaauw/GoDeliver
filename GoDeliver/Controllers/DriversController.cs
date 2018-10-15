@@ -38,7 +38,7 @@ namespace GoDeliver.Controllers
         }
 
         [HttpPost()]
-        public IActionResult CreateDriver([FromRoute]DriverForCreationDto driverInfo)
+        public IActionResult CreateDriver([FromBody]DriverForCreationDto driverInfo)
         {
 
             var driverError = "Please look at your data and make sure it's not empty, incorrect, or has values that are the same!";
@@ -51,6 +51,10 @@ namespace GoDeliver.Controllers
 
 
             driver.Name = driverInfo.Name;
+            if (driverInfo.Name == null )
+            {
+                return StatusCode(500, "The name is invalid or too long!");
+            }
             driver.CreatedAtDate = DateTime.Now;
             driver.UpdatedAtDate = driver.CreatedAtDate;
             if (!_driverInfoRepository.Save())
@@ -98,11 +102,20 @@ namespace GoDeliver.Controllers
 
             if (driverToEdit.Name != driverEdit.Name)
             {
+                if (driverEdit.Name.Length > 50 || driverToEdit.Name == null)
+                {
+                    return StatusCode(500, "The name is too long, also make sure it's entered");
+                }
                 driverToEdit.Name = driverEdit.Name;
             }
 
             if (driverToEdit.CreatedAtDate != driverEdit.CreatedAtDate)
             {
+                if (driverEdit.CreatedAtDate == null)
+                {
+                    return StatusCode(500, "Please check the date you entered");
+                }
+
                 driverToEdit.CreatedAtDate = driverEdit.CreatedAtDate;
             }
 
@@ -116,6 +129,46 @@ namespace GoDeliver.Controllers
             return Ok(driverToEdit);
         }
 
+
+
+        [HttpPatch("{driverId}")]
+        public IActionResult PartiallyUpdateDriver([FromRoute] int driverId, 
+            [FromBody] DriverForCreationDto patchDriver)
+        {
+            if (patchDriver == null)
+            {
+                return BadRequest();
+            }
+
+            var DriverEntity = _driverInfoRepository.GetDriver(driverId);
+
+            if(DriverEntity == null)
+            {
+                return StatusCode(500, "The driver you requested is not in the database");
+            }
+
+            if (patchDriver.Name != null)
+            {
+                DriverEntity.Name = patchDriver.Name;
+            }
+
+            if (patchDriver.CreatedAtDate != null)
+            {
+                DriverEntity.CreatedAtDate = patchDriver.CreatedAtDate;
+            }
+
+            DriverEntity.UpdatedAtDate = DateTime.Now;
+
+
+            if (!_driverInfoRepository.Save())
+            {
+                return StatusCode(500, "Something happened while handling the request");
+            }
+
+
+
+            return Ok(DriverEntity);
+        }
 
 
     }

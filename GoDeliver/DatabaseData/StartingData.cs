@@ -181,7 +181,6 @@ namespace GoDeliver.DatabaseData
                         TelephoneNr = "0212188272",
                         CreatedAtDate = new DateTime(2013,02,18, 15, 12, 11, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2018,03,12, 14, 11, 12, DateTimeKind.Local)
-
                     },
 
                     new Restaurant()

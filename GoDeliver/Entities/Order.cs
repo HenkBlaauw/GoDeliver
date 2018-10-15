@@ -15,6 +15,7 @@ namespace GoDeliver.Entities
         public int OrderId { get; set; }
 
         [Required]
+        [ForeignKey("CustomerId")]
         public int CustomerId { get; set; }
 
         [Required]

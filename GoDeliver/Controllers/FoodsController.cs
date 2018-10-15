@@ -27,6 +27,10 @@ namespace GoDeliver.Controllers
         public IActionResult GetFoods()
         {
             var foodEntities = _foodInfoRepository.GetFoods();
+            if (foodEntities == null)
+            {
+                return StatusCode(500, "The food database is empty, sorry");
+            }
             return Ok(foodEntities);
 
         }
@@ -37,6 +41,11 @@ namespace GoDeliver.Controllers
         public IActionResult GetFood(int foodId)
         {
             var foodEntities = _foodInfoRepository.GetFood(foodId);
+            if (foodEntities == null)
+            {
+                return StatusCode(500, "The food you requested is not available");
+            }
+
             return Ok(foodEntities);
         }
 
@@ -55,9 +64,28 @@ namespace GoDeliver.Controllers
             }
 
             food.Name = foodInfo.Name;
+            if (food.Name == null || food.Name.Length > 10)
+            {
+                return StatusCode(500, "Sorry, the name is too long, or you forgot to enter it");
+            }
+
+
             food.Description = foodInfo.Description;
+            if (food.Description == null || food.Name.Length > 100)
+            {
+                return StatusCode(500, "Sorry, the description is too long, or you forgot to enter it");
+            }
+            
             food.RestaurantId = foodInfo.RestaurantId;
+           
+
             food.Cost = foodInfo.Cost;
+            if (food.Cost == null || food.Cost.Equals(0))
+            {
+                return StatusCode(500, "Sorry, the cost cannot be 0");
+            }
+
+
             food.CreatedAtDate = DateTime.Now;
             food.UpdatedAtDate = food.CreatedAtDate;
 
@@ -140,7 +168,59 @@ namespace GoDeliver.Controllers
         }
 
 
+        [HttpPatch("{foodId}")]
+        public IActionResult PartiallyUpdateFood([FromRoute]int foodId, 
+            [FromBody]FoodForCreationDto patchFood)
+        {
+            if (patchFood == null)
+            {
+                return BadRequest();
+            }
 
+            var FoodEntity = _foodInfoRepository.GetFood(foodId);
+
+            if (FoodEntity == null)
+            {
+                return StatusCode(500, "The food you requested is not available");
+            }
+
+            if (patchFood.Name != null)
+            {
+                FoodEntity.Name = patchFood.Name;
+            }
+
+            if (patchFood.Description != null)
+            {
+                FoodEntity.Description = patchFood.Description;
+            }
+
+            if (patchFood.Cost != null)
+            {
+                FoodEntity.Cost = patchFood.Cost;
+            }
+
+            if (patchFood.CreatedAtDate != null)
+            {
+                FoodEntity.CreatedAtDate = patchFood.CreatedAtDate;
+            }
+
+            if (patchFood.RestaurantId != null)
+            {
+                FoodEntity.RestaurantId = patchFood.RestaurantId;
+            }
+
+            patchFood.UpdatedAtDate = DateTime.Now;
+
+            if (!_foodInfoRepository.Save())
+            {
+                return StatusCode(500, "Something happened while handling your request");
+            }
+
+            return Ok(FoodEntity);
+
+
+
+        }
 
 
 
