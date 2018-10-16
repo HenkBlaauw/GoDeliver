@@ -243,6 +243,10 @@ namespace GoDeliver.Controllers
 
             if (patchRestaurant.Name != null)
             {
+                if (patchRestaurant.Name.Length > 50)
+                {
+                    return StatusCode(500, "THe name is too long!");
+                }
                 RestaurantEntity.Name = patchRestaurant.Name;
             }
 
@@ -253,6 +257,10 @@ namespace GoDeliver.Controllers
 
             if (patchRestaurant.TelephoneNr != null)
             {
+                if (patchRestaurant.TelephoneNr.Length != 10)
+                {
+                    return StatusCode(500, "The number is either too short or too long");
+                }
                 RestaurantEntity.TelephoneNr = patchRestaurant.TelephoneNr;
             }
 

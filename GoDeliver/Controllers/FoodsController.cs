@@ -186,6 +186,10 @@ namespace GoDeliver.Controllers
 
             if (patchFood.Name != null)
             {
+                if (patchFood.Name.Length > 50)
+                {
+                    return StatusCode(500, "The name is too long");
+                }
                 FoodEntity.Name = patchFood.Name;
             }
 

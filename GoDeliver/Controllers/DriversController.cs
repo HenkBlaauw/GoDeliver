@@ -149,6 +149,10 @@ namespace GoDeliver.Controllers
 
             if (patchDriver.Name != null)
             {
+                if (patchDriver.Name.Length > 50)
+                {
+                    return StatusCode(500, "The name is too long");
+                }
                 DriverEntity.Name = patchDriver.Name;
             }
 

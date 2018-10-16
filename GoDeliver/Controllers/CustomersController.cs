@@ -212,6 +212,10 @@ namespace GoDeliver.Controllers
 
             if (patchCustomer.Name != null)
             {
+                if (patchCustomer.Name.Length > 50)
+                {
+                    return StatusCode(500, "THe name is too long");
+                }
                 CustomerEntity.Name = patchCustomer.Name;
             }
 
@@ -227,6 +231,10 @@ namespace GoDeliver.Controllers
 
             if (patchCustomer.MobileNr != null)
             {
+                if (patchCustomer.MobileNr.Length != 10)
+                {
+                    return StatusCode(500, "The number must be 10 digits long");
+                }
                 CustomerEntity.MobileNr = patchCustomer.MobileNr;
             }
 
