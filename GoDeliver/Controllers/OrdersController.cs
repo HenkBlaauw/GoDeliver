@@ -140,7 +140,6 @@ namespace GoDeliver.Controllers
         [HttpPut("{orderId}")]
         public IActionResult UpdateOrder([FromRoute] int orderId, [FromBody] OrderForCreationDto orderEdit)
         {
-
             var orderToEdit = _orderInfoRepository.GetOrder(orderId);
 
             if (orderToEdit.Name != orderEdit.Name)
@@ -185,7 +184,6 @@ namespace GoDeliver.Controllers
                 orderToEdit.State = orderEdit.State;
             }
 
-
             if (orderToEdit.Cost != orderEdit.Cost)
             {
                 if(orderEdit.Cost < 0 )
@@ -203,8 +201,6 @@ namespace GoDeliver.Controllers
                 }
                 orderToEdit.TimeAtRestaurant = orderEdit.TimeAtRestaurant;
             }
-            
-
 
             if (orderToEdit.TimePickedUp != orderEdit.TimePickedUp)
             {
@@ -215,7 +211,6 @@ namespace GoDeliver.Controllers
                 orderToEdit.TimePickedUp = orderEdit.TimePickedUp;
             }
 
-
             if (orderToEdit.DeliveryTime != orderEdit.DeliveryTime)
             {
                 if (orderEdit.DeliveryTime == null)
@@ -225,7 +220,6 @@ namespace GoDeliver.Controllers
                 orderToEdit.DeliveryTime = orderEdit.DeliveryTime;
             }
 
-
             if (orderToEdit.CreatedAtDate != orderEdit.CreatedAtDate)
             {
                 if (orderEdit.CreatedAtDate == null)
@@ -234,26 +228,18 @@ namespace GoDeliver.Controllers
                 }
                 orderToEdit.CreatedAtDate = orderEdit.CreatedAtDate;
             }
-
-
-
             orderToEdit.UpdatedAtDate = DateTime.Now;
-
-
 
             if (!_orderInfoRepository.Save())
             {
                 return StatusCode(500, "A problem happened while handling your request.");
             }
 
-
             return Ok(orderToEdit);
-
         }
 
         [HttpPatch("{orderId}")]
-        public IActionResult PartiallyUpdateOrder([FromRoute]int orderId,
-            [FromBody]OrderForCreationDto patchOrder)
+        public IActionResult PartiallyUpdateOrder([FromRoute]int orderId, [FromBody]OrderForCreationDto patchOrder)
         {
             if (patchOrder == null)
             {
@@ -292,7 +278,6 @@ namespace GoDeliver.Controllers
                 OrderEntity.Description = patchOrder.Description;
             }
 
-
             if (patchOrder.TimeAtRestaurant != null)
             {
                 OrderEntity.TimeAtRestaurant = patchOrder.TimeAtRestaurant;
@@ -313,12 +298,10 @@ namespace GoDeliver.Controllers
                 OrderEntity.Cost = patchOrder.Cost;
             }
 
-
             if (patchOrder.State != null)
             {
                 OrderEntity.State = patchOrder.State;
             }
-
 
             OrderEntity.UpdatedAtDate = DateTime.Now;
 
@@ -328,12 +311,6 @@ namespace GoDeliver.Controllers
             }
 
             return Ok(OrderEntity);
-
-
-
         }
-
-
-
     }
 }

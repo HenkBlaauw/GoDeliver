@@ -161,9 +161,7 @@ namespace GoDeliver.DatabaseData
 
             var restaurants = new List<Restaurant>()
                 {
-
                     new Restaurant()
-
                     {
                        // RestaurantId = 0,
                         Name = "KFC",
@@ -172,7 +170,6 @@ namespace GoDeliver.DatabaseData
                         CreatedAtDate = new DateTime(2011,11,11, 17, 28, 14, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2016, 03, 12, 12, 22, 23, DateTimeKind.Local)
                     },
-
                     new Restaurant()
                     {
                        // RestaurantId = 1,
@@ -182,7 +179,6 @@ namespace GoDeliver.DatabaseData
                         CreatedAtDate = new DateTime(2013,02,18, 15, 12, 11, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2018,03,12, 14, 11, 12, DateTimeKind.Local)
                     },
-
                     new Restaurant()
                     { 
                         //RestaurantId = 2,
@@ -192,7 +188,6 @@ namespace GoDeliver.DatabaseData
                         CreatedAtDate = new DateTime(2012, 07, 11, 14, 11, 48, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2018, 02, 12, 16, 11, 37, DateTimeKind.Local)
                     },
-
                     new Restaurant()
                     {
                        // RestaurantId = 3,
@@ -202,7 +197,6 @@ namespace GoDeliver.DatabaseData
                         CreatedAtDate = new DateTime(2018, 02, 11, 17, 11, 45, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2018, 02, 11, 11, 23, 11, DateTimeKind.Local)
                     },
-
                     new Restaurant()
                     {
                        // RestaurantId = 4,
@@ -212,7 +206,6 @@ namespace GoDeliver.DatabaseData
                         CreatedAtDate = new DateTime(2006, 01, 18, 12, 52, 49, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2016, 08, 09, 07, 23, 11, DateTimeKind.Local)
                     },
-
                     new Restaurant()
                     {
                         Name = "Tikkaways",
@@ -225,11 +218,7 @@ namespace GoDeliver.DatabaseData
                         CreatedAtDate = new DateTime(2010, 02, 02, 00, 00, 00, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2012, 12, 12, 01, 01, 01, DateTimeKind.Local)
                     }
-
-
-
             };
-
 
             var drivers = new List<Driver>()
             {
@@ -239,28 +228,24 @@ namespace GoDeliver.DatabaseData
                     CreatedAtDate = new DateTime(2008, 10, 28, 15, 12, 11, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2012, 11, 09, 17, 11, 20, DateTimeKind.Local)
                 },
-                
                 new Driver()
                 {
                     Name = "Arnold",
                     CreatedAtDate = new DateTime(2018, 08, 12, 17, 18, 10, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2018, 08, 12, 17, 18, 10, DateTimeKind.Local)
                 },
-
                 new Driver()
                 {
                     Name = "Nathan",
                     CreatedAtDate = new DateTime(2011, 09, 09, 13, 17, 20, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2014, 10, 11, 21, 18, 12, DateTimeKind.Local)
                 },
-
                 new Driver()
                 {
                     Name = "Nelize",
                     CreatedAtDate = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2015, 10, 11, 13, 12, 12, DateTimeKind.Local)
                 }
-
             };
 
             var orders = new List<Order>()
@@ -283,15 +268,12 @@ namespace GoDeliver.DatabaseData
 
              
             };
-
                 context.Orders.AddRange(orders);
                 context.Drivers.AddRange(drivers);
                 context.Restaurants.AddRange(restaurants);
                 context.Foods.AddRange(foods);
                 context.Customers.AddRange(customers);
-            
                 context.SaveChanges();
-            
         }
     }
 }

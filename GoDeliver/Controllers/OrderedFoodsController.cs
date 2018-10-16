@@ -37,7 +37,6 @@ namespace GoDeliver.Controllers
             {
                 return StatusCode(500, "The order you requested is not valid");
             }
-
             return Ok(ordered);
         }
 
@@ -52,7 +51,6 @@ namespace GoDeliver.Controllers
             {
                 return BadRequest(orderError);
             }
-
 
             orderedFood.FoodId = orderedFoodForCreationDto.FoodId;
             orderedFood.OrderId = orderedFoodForCreationDto.OrderId;
@@ -72,7 +70,6 @@ namespace GoDeliver.Controllers
             }
 
             return Ok(orderedFood);
-
         }
 
 
@@ -92,16 +89,13 @@ namespace GoDeliver.Controllers
             {
                 return StatusCode(500, "A thing that wasn't supposed to happen happened");
             }
-
             return NoContent();
         }
-
 
         [HttpPut("{orderedFoodId}")]
         public IActionResult UpdateOrderedFood([FromRoute]int orderedFoodId,
             [FromBody] OrderedFoodForCreationDto orderedFood)
         {
-
             if (orderedFood == null)
             {
                 return BadRequest();
@@ -113,7 +107,6 @@ namespace GoDeliver.Controllers
             {
                 return StatusCode(500, "The ordered food you're trying to find is not in the database");
             }
-
 
             if (orderedFood.OrderId != null)
             {
@@ -127,24 +120,17 @@ namespace GoDeliver.Controllers
 
             OrderedFoodEntity.UpdatedAtDate = DateTime.Now;
 
-
             if (!_orderedFoodRepository.Save())
             {
                 return StatusCode(500, "Something happened while handling your request");
             }
 
-
             return Ok(OrderedFoodEntity);
-
-
         }
 
-
         [HttpPatch("{orderedFoodId}")]
-        public IActionResult PartiallyUpdateOrderedFood([FromRoute] int orderedFoodId,
-            [FromBody] OrderedFoodForCreationDto patchOrderedFood)
+        public IActionResult PartiallyUpdateOrderedFood([FromRoute] int orderedFoodId,[FromBody] OrderedFoodForCreationDto patchOrderedFood)
         {
-
             if (patchOrderedFood == null)
             {
                 return BadRequest();
@@ -156,7 +142,6 @@ namespace GoDeliver.Controllers
             {
                 return StatusCode(500, "The ordered food you requested is not in the database");
             }
-
 
             if (patchOrderedFood.OrderId != null)
             {
@@ -176,7 +161,6 @@ namespace GoDeliver.Controllers
             }
 
             return Ok(OrderedFoodEntity);
-
         }
     }
 }

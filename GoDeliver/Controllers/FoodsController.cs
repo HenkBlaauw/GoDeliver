@@ -9,19 +9,14 @@ using System.Threading.Tasks;
 
 namespace GoDeliver.Controllers
 {
-
     [Route("api/foods")]
     public class FoodsController : Controller
-    {
-
+    { 
         private InfoRepository _foodInfoRepository;
         public FoodsController(InfoRepository foodInfoRepository)
         {
             _foodInfoRepository = foodInfoRepository;
         }
-
-
-
 
         [HttpGet()]
         public IActionResult GetFoods()
@@ -32,10 +27,7 @@ namespace GoDeliver.Controllers
                 return StatusCode(500, "The food database is empty, sorry");
             }
             return Ok(foodEntities);
-
         }
-
-
 
         [HttpGet("{foodId}")]
         public IActionResult GetFood(int foodId)
@@ -45,10 +37,8 @@ namespace GoDeliver.Controllers
             {
                 return StatusCode(500, "The food you requested is not available");
             }
-
             return Ok(foodEntities);
         }
-
 
         [HttpPost()]
         public IActionResult CreateFood([FromBody] FoodForCreationDto foodInfo)
@@ -56,7 +46,6 @@ namespace GoDeliver.Controllers
             var foodError = "Please look at your data and make sure it's not empty, incorrect, or has values that are the same!";
 
             Food food = new Food();
-
 
             if(foodInfo == null)
             {
@@ -69,7 +58,6 @@ namespace GoDeliver.Controllers
                 return StatusCode(500, "Sorry, the name is too long, or you forgot to enter it");
             }
 
-
             food.Description = foodInfo.Description;
             if (food.Description == null || food.Name.Length > 100)
             {
@@ -77,7 +65,6 @@ namespace GoDeliver.Controllers
             }
             
             food.RestaurantId = foodInfo.RestaurantId;
-           
 
             food.Cost = foodInfo.Cost;
             if (food.Cost == null || food.Cost.Equals(0))
@@ -85,10 +72,8 @@ namespace GoDeliver.Controllers
                 return StatusCode(500, "Sorry, the cost cannot be 0");
             }
 
-
             food.CreatedAtDate = DateTime.Now;
             food.UpdatedAtDate = food.CreatedAtDate;
-
 
             _foodInfoRepository.AddFood(food);
 
@@ -97,10 +82,7 @@ namespace GoDeliver.Controllers
                 return StatusCode(500, "Something went wrong during the request...");
             }
 
-
             return Ok(food);
-
-
         }
 
         [HttpDelete("{foodId}")]
@@ -121,16 +103,13 @@ namespace GoDeliver.Controllers
             }
 
             return NoContent();
-
         }
 
         [HttpPut("{foodId}")]
         public IActionResult UpdateFood([FromRoute]int foodId, [FromBody] FoodForCreationDto foodEdit)
         {
             var foodToEdit = _foodInfoRepository.GetFood(foodId);
-
             Food food = new Food();
-
 
             if (foodToEdit.Name != foodEdit.Name)
             {
@@ -169,8 +148,7 @@ namespace GoDeliver.Controllers
 
 
         [HttpPatch("{foodId}")]
-        public IActionResult PartiallyUpdateFood([FromRoute]int foodId, 
-            [FromBody]FoodForCreationDto patchFood)
+        public IActionResult PartiallyUpdateFood([FromRoute]int foodId,[FromBody]FoodForCreationDto patchFood)
         {
             if (patchFood == null)
             {
@@ -221,12 +199,6 @@ namespace GoDeliver.Controllers
             }
 
             return Ok(FoodEntity);
-
-
-
         }
-
-
-
     }
 }

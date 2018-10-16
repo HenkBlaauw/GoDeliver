@@ -36,7 +36,6 @@ namespace GoDeliver.Controllers
             {
                 return StatusCode(500, "The restaurant you want is not in the database");
             }
-
             return Ok(restaurantEntities);
         }
 
@@ -52,13 +51,11 @@ namespace GoDeliver.Controllers
                 return BadRequest(restaurantError);
             }
 
-
             restaurant.Name = restaurantInfo.Name;
             if (restaurantInfo.Name == null || restaurantInfo.Name.Length > 50)
             {
                 return StatusCode(500, "The name is either null or too long");
             }
-
 
             restaurant.Adress = restaurantInfo.Adress;
             if (restaurantInfo.Adress == null || restaurantInfo.Adress.Length > 50)
@@ -72,7 +69,6 @@ namespace GoDeliver.Controllers
                 return StatusCode(500, "The number must be 10 digits long, and it can't be null!");
             }
             
-
             restaurant.foods = restaurantInfo.foods;
 
             restaurant.CreatedAtDate = DateTime.Now;
@@ -93,11 +89,6 @@ namespace GoDeliver.Controllers
             return Ok(restaurant);
         }
 
-
-
-
-
-
         [HttpPut("{restaurantId}")]
         public IActionResult UpdateRestaurant([FromRoute]int restaurantId, [FromBody] RestaurantForCreationDto restaurantInfo)
         {
@@ -117,6 +108,7 @@ namespace GoDeliver.Controllers
             {
                 restaurantEntity.Name = restaurantInfo.Name;
             }
+
             if (restaurantEntity.Name.Length > 50)
             {
                 return StatusCode(500, "The name is too long!");
@@ -135,6 +127,7 @@ namespace GoDeliver.Controllers
             {
                 restaurantEntity.Adress = restaurantInfo.Adress;
             }
+
             if (restaurantEntity.Adress == null || restaurantEntity.Adress.Length > 50)
             {
                 return StatusCode(500, "The adress is too long or is null");
@@ -149,6 +142,7 @@ namespace GoDeliver.Controllers
 
             return Ok(restaurantEntity);
         }
+
         [HttpDelete("{restaurantId}")]
         public IActionResult DeleteRestaurant([FromRoute]int restaurantId)
         {
@@ -170,62 +164,8 @@ namespace GoDeliver.Controllers
 
         }
 
-        //[HttpPut("{restaurantId}")]
-        //public IActionResult UpdateRestaurant([FromRoute]int restaurantId, 
-        //    [FromBody] RestaurantForCreationDto restaurant)
-        //{
-        //    if (restaurant == null)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    var RestaurantEntity = _restaurantInfoRepository.GetRestaurant(restaurantId);
-
-        //    if (RestaurantEntity == null)
-        //    {
-        //        return StatusCode(500, "The restuarant you requested is not available");
-        //    }
-
-
-        //    if (restaurant.Name != null)
-        //    {
-        //        RestaurantEntity.Name = restaurant.Name;
-        //    }
-
-        //    if (restaurant.TelephoneNr != null)
-        //    {
-        //        RestaurantEntity.TelephoneNr = restaurant.TelephoneNr;
-        //    }
-
-        //    if (restaurant.Adress != null)
-        //    {
-        //        RestaurantEntity.Adress = restaurant.Adress;
-        //    }
-
-        //    if (restaurant.CreatedAtDate != null)
-        //    {
-        //        RestaurantEntity.CreatedAtDate = restaurant.CreatedAtDate;
-        //    }
-
-        //    RestaurantEntity.UpdatedAtDate = DateTime.Now;
-
-
-        //    if (!_restaurantInfoRepository.Save())
-        //    {
-        //        return StatusCode(500, "Something happened while handling your request");
-        //    }
-
-
-        //    return Ok(RestaurantEntity);
-
-        //}
-
-
-
-
-
         [HttpPatch("{restaurantId}")]
-        public IActionResult PartiallyUpdateRestaurant([FromRoute]int restaurantId, 
+        public IActionResult PartiallyUpdateRestaurant([FromRoute]int restaurantId,
             [FromBody]RestaurantForCreationDto patchRestaurant)
         {
             if (patchRestaurant == null)
@@ -239,7 +179,6 @@ namespace GoDeliver.Controllers
             {
                 return StatusCode(500, "The restaurant you requested is not in the database");
             }
-
 
             if (patchRestaurant.Name != null)
             {
@@ -276,18 +215,13 @@ namespace GoDeliver.Controllers
 
             RestaurantEntity.UpdatedAtDate = DateTime.Now;
 
-
             if (!_restaurantInfoRepository.Save())
             {
                 return StatusCode(500, "There was a problem handling your request");
             }
 
-
             return Ok(RestaurantEntity);
 
         }
-
-
-
     }
 }

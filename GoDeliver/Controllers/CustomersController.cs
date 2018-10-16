@@ -21,12 +21,10 @@ namespace GoDeliver.Controllers
         public IActionResult GetCustomers()
         {
             var customerEntities = _customerInfoRepository.GetCustomers();
-
             if (customerEntities == null)
             {
                 return StatusCode(500, "Sorry, the database is empty!");
             }
-
 
             return Ok(customerEntities);
 
@@ -42,7 +40,6 @@ namespace GoDeliver.Controllers
                 return StatusCode(500, "The customer is null and void, so i'm sorry, but we don't have this customer in the database");
             }
 
-            //  var customerResult = Mapper.Map<CustomerDto>(customer);
             return Ok(customer);
         }
 
@@ -50,7 +47,6 @@ namespace GoDeliver.Controllers
         [HttpPost()]
         public IActionResult CreateCustomer([FromBody]CustomerForCreationDto customerInfo)
         {
-
             var customerError = "Please look at your data and make sure it's not empty, incorrect, or has values that are the same!";
             Customer customer = new Customer();
 
@@ -97,7 +93,6 @@ namespace GoDeliver.Controllers
             {
                 return StatusCode(500, "A problem happened while handling your request.");
             }
-
             return Ok(customer);
         }
 
@@ -109,7 +104,6 @@ namespace GoDeliver.Controllers
         [HttpDelete("{customerId}")]
         public IActionResult DeleteCustomer([FromRoute]int customerId)
         {
-
             var customerEntity = _customerInfoRepository.GetCustomer(customerId);
 
             if (customerEntity == null)
@@ -132,7 +126,6 @@ namespace GoDeliver.Controllers
         [HttpPut("{customerId}")]
         public IActionResult UpdateCustomer([FromRoute]int customerId, [FromBody] CustomerForCreationDto customer)
         {
-
                 if (customer == null)
                 {
                     return BadRequest();
@@ -144,7 +137,6 @@ namespace GoDeliver.Controllers
                 {
                     return NotFound();
                 }
-
 
                 if (customer.Name != null)
                 {
@@ -179,25 +171,17 @@ namespace GoDeliver.Controllers
 
                 customer.UpdatedAtDate = DateTime.Now;
 
-
                 if (!_customerInfoRepository.Save())
                 {
                     return StatusCode(418, "Something happened maatjie. Ek is jammer, kyk na die tee pot, want jou data wil nie save nie");
                 }
 
-
                 return Ok(customerEntity);
-
-            
-            
         }
 
-
         [HttpPatch("{customerId}")]
-        public IActionResult PartiallyUpdateCustomer([FromRoute]int customerId,
-            [FromBody]CustomerForCreationDto patchCustomer)
+        public IActionResult PartiallyUpdateCustomer([FromRoute]int customerId,[FromBody]CustomerForCreationDto patchCustomer)
         {
-
             if (patchCustomer == null)
             {
                 return BadRequest();
@@ -238,23 +222,13 @@ namespace GoDeliver.Controllers
                 CustomerEntity.MobileNr = patchCustomer.MobileNr;
             }
 
-
             CustomerEntity.UpdatedAtDate = DateTime.Now;
-
 
             if (!_customerInfoRepository.Save())
             {
                 return StatusCode(500, "SOmething happened while handling your request");
             }
-
-
             return Ok(CustomerEntity);
-
-
         }
-
-
-
-
     }
 }

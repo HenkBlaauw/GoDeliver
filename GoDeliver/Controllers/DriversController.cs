@@ -9,23 +9,19 @@ using System.Threading.Tasks;
 
 namespace GoDeliver.Controllers
 {
-
     [Route("api/drivers")]
     public class DriversController : Controller
     {
-
         private InfoRepository _driverInfoRepository;
         public DriversController(InfoRepository driverInfoRepository)
         {
             _driverInfoRepository = driverInfoRepository;
         }
 
-        
         [HttpGet()]
         public IActionResult GetDrivers()
         {
             var driverEntities = _driverInfoRepository.GetDrivers();
-
             return Ok(driverEntities);
         }
         
@@ -33,14 +29,12 @@ namespace GoDeliver.Controllers
         public IActionResult GetDriver(int driverId)
         {
             var driver = _driverInfoRepository.GetDriver(driverId);
-
             return Ok(driver);
         }
 
         [HttpPost()]
         public IActionResult CreateDriver([FromBody]DriverForCreationDto driverInfo)
         {
-
             var driverError = "Please look at your data and make sure it's not empty, incorrect, or has values that are the same!";
             Driver driver = new Driver();
 
@@ -48,7 +42,6 @@ namespace GoDeliver.Controllers
             {
                 return BadRequest(driverError);
             }
-
 
             driver.Name = driverInfo.Name;
             if (driverInfo.Name == null )
@@ -61,15 +54,12 @@ namespace GoDeliver.Controllers
             {
                 return StatusCode(500, "A problem happened while handling your request.");
             }
-
             return Ok(driver);
         }
-
 
         [HttpDelete("{driverId}")]
         public IActionResult DeleteDriver([FromRoute]int driverId)
         {
-
             var driverEntity = _driverInfoRepository.GetDriver(driverId);
             if (driverEntity == null)
             {
@@ -82,12 +72,8 @@ namespace GoDeliver.Controllers
             {
                 return StatusCode(500, "Something went wrong");
             }
-
             return NoContent();
         }
-
-
-
 
         [HttpPut("{driverId}")]
         public IActionResult UpdateDriver([FromRoute]int driverId, [FromBody]DriverForCreationDto driverEdit)
@@ -115,7 +101,6 @@ namespace GoDeliver.Controllers
                 {
                     return StatusCode(500, "Please check the date you entered");
                 }
-
                 driverToEdit.CreatedAtDate = driverEdit.CreatedAtDate;
             }
 
@@ -125,15 +110,11 @@ namespace GoDeliver.Controllers
             {
                 return StatusCode(500, "Internal Server Error, I am sorry to inform you!");
             }
-
             return Ok(driverToEdit);
         }
 
-
-
         [HttpPatch("{driverId}")]
-        public IActionResult PartiallyUpdateDriver([FromRoute] int driverId, 
-            [FromBody] DriverForCreationDto patchDriver)
+        public IActionResult PartiallyUpdateDriver([FromRoute] int driverId,[FromBody] DriverForCreationDto patchDriver)
         {
             if (patchDriver == null)
             {
@@ -163,17 +144,12 @@ namespace GoDeliver.Controllers
 
             DriverEntity.UpdatedAtDate = DateTime.Now;
 
-
             if (!_driverInfoRepository.Save())
             {
                 return StatusCode(500, "Something happened while handling the request");
             }
 
-
-
             return Ok(DriverEntity);
         }
-
-
     }
 }
