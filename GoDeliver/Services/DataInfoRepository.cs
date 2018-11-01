@@ -70,10 +70,7 @@ namespace GoDeliver.Services
             return _context.Drivers.Where(c => c.DriverId == driverId).FirstOrDefault();
         }
 
-        public IEnumerable<Order> GetOrders()
-        {
-            return _context.Orders.OrderBy(c => c.Name).ToList();
-        }
+       
 
         public Order GetOrder(int orderId)
         {
@@ -138,6 +135,11 @@ namespace GoDeliver.Services
         public bool Save()
         {
             return (_context.SaveChanges() >= 0);
+        }
+
+        public IEnumerable<Order> GetOrders()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

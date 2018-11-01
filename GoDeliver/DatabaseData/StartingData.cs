@@ -26,7 +26,7 @@ namespace GoDeliver.DatabaseData
                     //CustomerId = 1,
                     Name = "Henno",
                     Adress = "12 Le Roux Street, Maryland",
-                    MobileNr = "0876277898",
+                
                     CreatedAtDate = new DateTime(2012,12,12,10,10,12,DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2013, 04, 12, 08, 39, 10, DateTimeKind.Local)
                 },
@@ -36,7 +36,7 @@ namespace GoDeliver.DatabaseData
                     //CustomerId = 2,
                     Name = "Johan",
                     Adress = "18 Maritz Street, Maryland",
-                    MobileNr = "0762423789",
+                 
                       CreatedAtDate = new DateTime(2011, 10, 11, 11, 12, 20, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime( 2017, 08, 11, 14, 13, 29, DateTimeKind.Local)
                 },
@@ -46,7 +46,7 @@ namespace GoDeliver.DatabaseData
                    // CustomerId = 3,
                     Name = "Jacques",
                     Adress = "1 Church Street, Maryland",
-                    MobileNr = "0718262762",
+                   
                     CreatedAtDate = new DateTime(2011, 02, 14, 14, 15, 20, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2014, 03, 17, 15, 28, 49, DateTimeKind.Local)
                 },
@@ -56,7 +56,7 @@ namespace GoDeliver.DatabaseData
                     //CustomerId = 4,
                     Name = "Sarah",
                     Adress = "7 Miners Street, Maryland",
-                    MobileNr = "0711823212",
+                  
                     CreatedAtDate = new DateTime(2012, 04, 12, 19, 29, 58, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2017, 02, 11, 20, 17, 37, DateTimeKind.Local)
                 }
@@ -168,7 +168,7 @@ namespace GoDeliver.DatabaseData
                        // RestaurantId = 0,
                         Name = "KFC",
                         Adress = "13 Plattekloof Street",
-                        TelephoneNr = "0218934252",
+              
                         CreatedAtDate = new DateTime(2011,11,11, 17, 28, 14, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2016, 03, 12, 12, 22, 23, DateTimeKind.Local)
                     },
@@ -178,7 +178,7 @@ namespace GoDeliver.DatabaseData
                        // RestaurantId = 1,
                         Name = "McDonald's",
                         Adress = "19 High Street",
-                        TelephoneNr = "0212188272",
+                  
                         CreatedAtDate = new DateTime(2013,02,18, 15, 12, 11, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2018,03,12, 14, 11, 12, DateTimeKind.Local)
                     },
@@ -188,7 +188,7 @@ namespace GoDeliver.DatabaseData
                         //RestaurantId = 2,
                         Name = "Nando's",
                         Adress = "Shop 73, N1 City",
-                        TelephoneNr = "0218920123",
+                
                         CreatedAtDate = new DateTime(2012, 07, 11, 14, 11, 48, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2018, 02, 12, 16, 11, 37, DateTimeKind.Local)
                     },
@@ -198,7 +198,7 @@ namespace GoDeliver.DatabaseData
                        // RestaurantId = 3,
                         Name= "Ocean's Basket",
                         Adress = "Shop 98, N1 City",
-                        TelephoneNr = "0211980987",
+                  
                         CreatedAtDate = new DateTime(2018, 02, 11, 17, 11, 45, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2018, 02, 11, 11, 23, 11, DateTimeKind.Local)
                     },
@@ -208,7 +208,7 @@ namespace GoDeliver.DatabaseData
                        // RestaurantId = 4,
                         Name = "Burger King",
                         Adress = "Shop 102, Canal Walk, Century City",
-                        TelephoneNr = "0219720889",
+                  
                         CreatedAtDate = new DateTime(2006, 01, 18, 12, 52, 49, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2016, 08, 09, 07, 23, 11, DateTimeKind.Local)
                     },
@@ -217,7 +217,7 @@ namespace GoDeliver.DatabaseData
                     {
                         Name = "Tikkaways",
                         Adress = "Shop 68, N1 City",
-                        TelephoneNr = "0215950167",
+               
                         foods = new List<Food>()
                         {
 
@@ -270,13 +270,11 @@ namespace GoDeliver.DatabaseData
                     CustomerId = 2,
                     DriverId = 2,
                     RestaurantId = 1,
-                    Name = "Happy Meal",
-                    Description = "A kiddies meal!",
-                    Cost = 35,
+
+            
+                    TotalCost = 35,
                     TimeAtRestaurant = new DateTime(2018, 10, 02, 16, 20,00, DateTimeKind.Local),
-                    TimePickedUp = new DateTime(2018, 10, 02, 16, 25, 00, DateTimeKind.Local),
-                    DeliveryTime = new DateTime(2018, 10, 02, 17, 00, 00, DateTimeKind.Local),
-                    State = "Delivered",
+                   
                     CreatedAtDate = new DateTime(2018, 10, 02, 16, 00, 00, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2018, 10, 02, 17, 00, 00, DateTimeKind.Local)
                 }

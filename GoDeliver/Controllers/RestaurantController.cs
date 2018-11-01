@@ -66,11 +66,7 @@ namespace GoDeliver.Controllers
                 return StatusCode(500, "The adress is null or too long");
             }
 
-            restaurant.TelephoneNr = restaurantInfo.TelephoneNr;
-            if (restaurant.TelephoneNr.Length != 10 || restaurant.TelephoneNr == null)
-            {
-                return StatusCode(500, "The number must be 10 digits long, and it can't be null!");
-            }
+           
             
 
             restaurant.foods = restaurantInfo.foods;
@@ -78,10 +74,7 @@ namespace GoDeliver.Controllers
             restaurant.CreatedAtDate = DateTime.Now;
             restaurant.UpdatedAtDate = DateTime.Now;
 
-            if (restaurant.TelephoneNr.Length > 10 || restaurant.Name.Length > 50)
-            {
-                return BadRequest(restaurantError);
-            }
+           
 
             _restaurantInfoRepository.AddRestaurant(restaurant);
 
@@ -122,14 +115,7 @@ namespace GoDeliver.Controllers
                 return StatusCode(500, "The name is too long!");
             }
 
-            if (restaurantInfo.TelephoneNr != null)
-            {
-                restaurantEntity.TelephoneNr = restaurantInfo.TelephoneNr;
-            }
-            if (restaurantEntity.TelephoneNr.Length != 10)
-            {
-                return StatusCode(500, "The number is too long!");
-            }
+            
 
             if (restaurantInfo.Adress != null)
             {
@@ -255,14 +241,7 @@ namespace GoDeliver.Controllers
                 RestaurantEntity.Adress = patchRestaurant.Adress;
             }
 
-            if (patchRestaurant.TelephoneNr != null)
-            {
-                if (patchRestaurant.TelephoneNr.Length != 10)
-                {
-                    return StatusCode(500, "The number is either too short or too long");
-                }
-                RestaurantEntity.TelephoneNr = patchRestaurant.TelephoneNr;
-            }
+            
 
             if (patchRestaurant.foods != null)
             {

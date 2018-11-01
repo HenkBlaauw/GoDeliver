@@ -9,49 +9,26 @@ namespace GoDeliver.Entities
 {
     public class Order
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Required]
         public int OrderId { get; set; }
 
-        [Required]
-        [ForeignKey("CustomerId")]
         public int CustomerId { get; set; }
-
-        [Required]
-        public int DriverId { get; set; }
-
-        [Required] 
-        public int RestaurantId { get; set; }
-
-        [Required]
-        [MaxLength(100)]
-        public string Name { get; set; }
         
-        [Required]
-        [MaxLength(100)]
-        public string Description { get; set; }
+        public int DriverId { get; set; }
+        
+        public int RestaurantId { get; set; }
+        
+        public Food Foods { get; set; }
 
-        [Required]
         public DateTime TimeAtRestaurant { get; set; }
 
-        [Required] 
-        public DateTime TimePickedUp { get; set; } 
+        public string RestaurantAddress { get; set; }
 
-        [Required]
-        public DateTime DeliveryTime { get; set; }
-
-        [Required]
-        [MaxLength(100)]
-        public string State { get; set; }
-
-        [Required]
-        public float Cost { get; set; }
-
-        [Required]
+        public string CustomerAddress { get; set; }
+        
+        public float TotalCost { get; set; }
+        
         public DateTime CreatedAtDate { get; set; }
-
-        [Required]
+        
         public DateTime UpdatedAtDate { get; set; }
     }
 }

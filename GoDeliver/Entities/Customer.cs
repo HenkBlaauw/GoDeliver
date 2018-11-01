@@ -24,10 +24,6 @@ namespace GoDeliver.Entities
         public string Adress { get; set; }
 
         [Required]
-        [MaxLength(10)]
-        public string MobileNr { get; set; }
-
-        [Required]
         public DateTime CreatedAtDate { get; set; }
 
         [Required]

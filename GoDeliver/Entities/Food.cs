@@ -28,6 +28,8 @@ namespace GoDeliver.Entities
         [Required]
         public int RestaurantId { get; set; }
 
+        public ICollection<Order> OrderedFood { get; set; }
+
         [Required]
         public DateTime CreatedAtDate { get; set; }
 

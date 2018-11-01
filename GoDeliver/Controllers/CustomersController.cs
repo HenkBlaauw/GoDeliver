@@ -77,19 +77,12 @@ namespace GoDeliver.Controllers
                 return StatusCode(500, "Your name is too long. Please ensure it's less than 50 characters long!");
             }
 
-            customer.MobileNr = customerInfo.MobileNr;
-            if (customer.MobileNr.Length > 10)
-            {
-                return StatusCode(500, "Your mobile number is too long. Please ensure it is shorter than 11 digits long!");
-            }
+            
 
             customer.CreatedAtDate = DateTime.Now;
             customer.UpdatedAtDate = customer.CreatedAtDate;
 
-            if (customer.MobileNr.Length > 10)
-            {
-                return BadRequest(customerError);
-            }
+            
 
             _customerInfoRepository.AddCustomer(customer);
 
@@ -167,11 +160,7 @@ namespace GoDeliver.Controllers
                     return StatusCode(500, "The adress is too long...............");
                 }
 
-                if (customer.MobileNr != null)
-                {
-                    customerEntity.MobileNr = customer.MobileNr;
-                }
-
+              
                 if (customer.CreatedAtDate != null)
                 {
                     customerEntity.CreatedAtDate = customer.CreatedAtDate;
@@ -229,14 +218,7 @@ namespace GoDeliver.Controllers
                 CustomerEntity.CreatedAtDate = patchCustomer.CreatedAtDate;
             }
 
-            if (patchCustomer.MobileNr != null)
-            {
-                if (patchCustomer.MobileNr.Length != 10)
-                {
-                    return StatusCode(500, "The number must be 10 digits long");
-                }
-                CustomerEntity.MobileNr = patchCustomer.MobileNr;
-            }
+           
 
 
             CustomerEntity.UpdatedAtDate = DateTime.Now;
