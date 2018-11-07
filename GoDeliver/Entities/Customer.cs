@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace GoDeliver.Entities
 {
+    [Table("Customers")]
     public class Customer
     {
 

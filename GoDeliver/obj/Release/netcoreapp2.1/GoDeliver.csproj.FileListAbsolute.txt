@@ -1,0 +1,14 @@
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\bin\Release\netcoreapp2.1\GoDeliver.deps.json
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\bin\Release\netcoreapp2.1\GoDeliver.runtimeconfig.json
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\bin\Release\netcoreapp2.1\GoDeliver.runtimeconfig.dev.json
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\bin\Release\netcoreapp2.1\GoDeliver.dll
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\bin\Release\netcoreapp2.1\GoDeliver.pdb
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\obj\Release\netcoreapp2.1\GoDeliver.csproj.CoreCompileInputs.cache
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\obj\Release\netcoreapp2.1\GoDeliver.RazorAssemblyInfo.cache
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\obj\Release\netcoreapp2.1\GoDeliver.RazorAssemblyInfo.cs
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\obj\Release\netcoreapp2.1\GoDeliver.AssemblyInfoInputs.cache
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\obj\Release\netcoreapp2.1\GoDeliver.AssemblyInfo.cs
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\obj\Release\netcoreapp2.1\GoDeliver.RazorTargetAssemblyInfo.cache
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\obj\Release\netcoreapp2.1\GoDeliver.dll
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\obj\Release\netcoreapp2.1\GoDeliver.pdb
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliver\obj\Release\netcoreapp2.1\GoDeliver.csprojAssemblyReference.cache

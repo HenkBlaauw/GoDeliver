@@ -18,7 +18,7 @@ namespace GoDeliver.EntityConfigurations
             Property(a => a.CreatedAtDate).HasColumnType("DateTime").IsRequired();
             Property(a => a.UpdatedAtDate).HasColumnType("DateTime").IsRequired();
          
-            ToTable("Foods");
+            Map(m=> m.ToTable("Foods"));
         }
     }
 }

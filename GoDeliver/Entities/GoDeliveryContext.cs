@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using GoDeliver.EntityConfigurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace GoDeliver.Entities
@@ -23,5 +23,16 @@ namespace GoDeliver.Entities
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderedFood> OrderedFoods { get; set; }
+
+
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+          //  modelBuilder.ApplyConfiguration(new CustomerConfigurations());
+
+        }
+
+
     }
 }

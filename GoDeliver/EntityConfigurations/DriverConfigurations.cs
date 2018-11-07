@@ -16,7 +16,7 @@ namespace GoDeliver.EntityConfigurations
             Property(a => a.CreatedAtDate).HasColumnType("DateTime").IsRequired();
             Property(a => a.UpdatedAtDate).HasColumnType("DateTime").IsRequired();
 
-            ToTable("Drivers");
+            Map(m=> m.ToTable("Drivers"));
         }
 
 
