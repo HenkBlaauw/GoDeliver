@@ -23,7 +23,7 @@ namespace GoDeliverWebApp.Controllers
     public class CustomersController : ApiController
     {
         private InfoRepository _customerInfoRepository;
-
+        GoDeliveryContext context = new GoDeliveryContext();
         public CustomersController(InfoRepository customerInfoRepository)
         {
             _customerInfoRepository = customerInfoRepository;
@@ -41,7 +41,7 @@ namespace GoDeliverWebApp.Controllers
 
         public CustomersController()
         {
-            GoDeliveryContext context = new GoDeliveryContext();
+           //GoDeliveryContext context = new GoDeliveryContext();
             _context = context;
 
             _customerInfoRepository = new DataInfoRepository(context);
@@ -112,6 +112,25 @@ namespace GoDeliverWebApp.Controllers
 
         }
 
+
+
+
+
+        [Route("restaurants")]
+        [HttpGet()]
+        public IHttpActionResult GetRestaurants()
+        {
+            GoDeliveryContext context = new GoDeliveryContext();
+
+            IQueryable<RestaurantDto> restaurants = from b in context.Restaurants
+                                                select new RestaurantDto()
+                                                {
+                                                    RestaurantId = b.RestaurantId,
+                                                    Name = b.Name
+                                                };
+
+            return Ok(restaurants);
+        }
 
 
 

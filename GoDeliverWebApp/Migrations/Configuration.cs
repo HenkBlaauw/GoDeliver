@@ -24,8 +24,8 @@ namespace GoDeliverWebApp.Migrations
                     CustomerId = 1,
                     Name = "Jackie",
                     Adress = "123 Test Avenue, Example District, Try City",
-                    CreatedAtDate = DateTime.Now,
-                    UpdatedAtDate = DateTime.Now
+                    CreatedAtDate = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local),
+                    UpdatedAtDate = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local)
                 },
 
                 new Customer()
@@ -33,8 +33,8 @@ namespace GoDeliverWebApp.Migrations
                     CustomerId = 2,
                     Name = "Testie",
                     Adress = "15 Examination Street, Template District, Model City",
-                    CreatedAtDate = DateTime.Now,
-                    UpdatedAtDate = DateTime.Now
+                    CreatedAtDate = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local),
+                    UpdatedAtDate = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local)
 
                 },
                 new Customer()
@@ -233,11 +233,11 @@ namespace GoDeliverWebApp.Migrations
                     Description = "Yummy, McNuggets!"
                 },
                 RestaurantAddress = "Shop 20, Canal walk",
-                TimeAtRestaurant = DateTime.Now,
+                TimeAtRestaurant = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local),
                 TotalCost = 25,
-                CreatedAtDate = DateTime.Now,
-                UpdatedAtDate = DateTime.Now
-               
+                CreatedAtDate = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local),
+                UpdatedAtDate = new DateTime(2013, 10, 12, 17, 18, 10, DateTimeKind.Local)
+
             });
 
 

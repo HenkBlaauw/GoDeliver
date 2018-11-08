@@ -14,7 +14,7 @@ namespace GoDeliverWebApp.EntityConfigurations
             Property(a => a.Adress).HasMaxLength(255).IsRequired();
             Property(a => a.CreatedAtDate).HasColumnType("DateTime").IsRequired();
             Property(a => a.UpdatedAtDate).HasColumnType("DateTime").IsRequired();
-         //   HasMany(t => t.foods).WithRequired(a => a.FoodId);
+            HasMany<Food>(t => t.Foods);
             Map(m => m.ToTable("Restaurants"));
         }
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GoDeliverWebApp.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace GoDeliverWebApp.Models
 
         public string TelephoneNr { get; set; }
 
-        public ICollection<Entities.Food> foods { get; set; }
+        public ICollection<Food> Foods { get; set; }
 
         public DateTime CreatedAtDate { get; set; }
 

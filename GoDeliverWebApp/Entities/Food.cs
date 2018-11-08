@@ -26,9 +26,11 @@ namespace GoDeliverWebApp.Entities
         public float Cost { get; set;}
 
         [Required]
-        public int RestaurantId { get; set; }
+        public long RestaurantId { get; set; }
 
-        public ICollection<Order> OrderedFood { get; set; }
+       // public ICollection<Order> OrderedFood { get; set; }
+
+
 
         [Required]
         public DateTime CreatedAtDate { get; set; }
@@ -36,5 +38,15 @@ namespace GoDeliverWebApp.Entities
         [Required]
         public DateTime UpdatedAtDate { get; set; }
 
+        public Food() { }
+
+        public Food(string name, string description, float cost, DateTime createdAtDate, DateTime updatedAtDate)
+        {
+            Name = name;
+            Description = description;
+            Cost = cost;
+            CreatedAtDate = createdAtDate;
+            UpdatedAtDate = updatedAtDate;
+        }
     }
 }

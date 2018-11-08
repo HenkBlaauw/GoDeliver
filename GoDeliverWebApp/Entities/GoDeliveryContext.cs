@@ -15,7 +15,7 @@ namespace GoDeliverWebApp.Entities
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Food> Foods { get; set; }
-        public DbSet<OrderedFood> OrderedFoods { get; set; }
+       // public DbSet<OrderedFood> OrderedFoods { get; set; }
 
 
 
@@ -26,7 +26,7 @@ namespace GoDeliverWebApp.Entities
             modelBuilder.Configurations.Add(new FoodConfigurations());
             modelBuilder.Configurations.Add(new RestaurantConfigurations());
             modelBuilder.Configurations.Add(new OrderConfigurations());
-
+          //  modelBuilder.Configurations.Add(new OrderedFoodsConfigurations());
         }
 
 

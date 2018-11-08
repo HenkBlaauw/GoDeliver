@@ -77,15 +77,15 @@ namespace GoDeliverWebApp.Services
             return _context.Orders.Where(c => c.OrderId == orderId).FirstOrDefault();
         }
 
-        public IEnumerable<OrderedFood> GetOrderedFoods()
-        {
-            return _context.OrderedFoods.OrderBy(c => c.OrderId).ToList();
-        }
+        //public IEnumerable<OrderedFood> GetOrderedFoods()
+        //{
+        //    return _context.OrderedFoods.OrderBy(c => c.OrderedFoodId).ToList();
+        //}
 
-        public OrderedFood GetOrderedFood(int orderedFoodId)
-        {
-            return _context.OrderedFoods.Where(c => c.OrderId == orderedFoodId).FirstOrDefault();
-        }
+        //public OrderedFood GetOrderedFood(int orderedFoodId)
+        //{
+        //    return _context.OrderedFoods.Where(c => c.OrderedFoodId == orderedFoodId).FirstOrDefault();
+        //}
 
         public void DeleteFood(Food food)
         {
@@ -122,15 +122,15 @@ namespace GoDeliverWebApp.Services
             _context.Orders.Remove(order);
         }
 
-        public void AddOrderedFood(OrderedFood orderedFood)
-        {
-            _context.OrderedFoods.Add(orderedFood);
-        }
+        //public void AddOrderedFood(OrderedFood orderedFood)
+        //{
+        //    _context.OrderedFoods.Add(orderedFood);
+        //}
 
-        public void DeleteOrderedFood(OrderedFood orderedFood)
-        {
-            _context.OrderedFoods.Remove(orderedFood);
-        }
+        //public void DeleteOrderedFood(OrderedFood orderedFood)
+        //{
+        //    _context.OrderedFoods.Remove(orderedFood);
+        //}
 
         public bool Save()
         {

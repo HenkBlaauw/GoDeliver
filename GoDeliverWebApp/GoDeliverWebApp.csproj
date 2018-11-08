@@ -202,7 +202,6 @@
     <Compile Include="Entities\Food.cs" />
     <Compile Include="Entities\GoDeliveryContext.cs" />
     <Compile Include="Entities\Order.cs" />
-    <Compile Include="Entities\OrderedFood.cs" />
     <Compile Include="Entities\Restaurant.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -235,13 +234,9 @@
     <Compile Include="Migrations\201811051353389_EnterData-Force.Designer.cs">
       <DependentUpon>201811051353389_EnterData-Force.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811060744573_AddFood.cs" />
-    <Compile Include="Migrations\201811060744573_AddFood.Designer.cs">
-      <DependentUpon>201811060744573_AddFood.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811060827006_AddFood1.cs" />
-    <Compile Include="Migrations\201811060827006_AddFood1.Designer.cs">
-      <DependentUpon>201811060827006_AddFood1.cs</DependentUpon>
+    <Compile Include="Migrations\201811081214577_AddOrderedFoods5.cs" />
+    <Compile Include="Migrations\201811081214577_AddOrderedFoods5.Designer.cs">
+      <DependentUpon>201811081214577_AddOrderedFoods5.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomerDto.cs" />
@@ -362,11 +357,8 @@
     <EmbeddedResource Include="Migrations\201811051353389_EnterData-Force.resx">
       <DependentUpon>201811051353389_EnterData-Force.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811060744573_AddFood.resx">
-      <DependentUpon>201811060744573_AddFood.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811060827006_AddFood1.resx">
-      <DependentUpon>201811060827006_AddFood1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811081214577_AddOrderedFoods5.resx">
+      <DependentUpon>201811081214577_AddOrderedFoods5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -13,8 +13,6 @@ namespace GoDeliverWebApp.Models
 
         public string Adress { get; set; }
 
-        public string MobileNr { get; set; }
-
         public DateTime CreatedAtDate { get; set; }
 
         public DateTime UpdatedAtDate { get; set; }

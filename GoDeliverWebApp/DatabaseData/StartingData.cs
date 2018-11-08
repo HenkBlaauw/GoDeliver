@@ -66,98 +66,98 @@ namespace GoDeliverWebApp.DatabaseData
 
 
 
-            var foods = new List<Food>()
-            {
+            //var foods = new List<Food>()
+            //{
 
-                new Food()
-                {
-                  //  FoodId = 1,
-                    Name = "Big Mac",
-                    Description = "The original Big Mac Hamburger",
-                    Cost = 32,
-                    RestaurantId = 2,
-                    CreatedAtDate = new DateTime(2017, 07, 11, 13, 38,13, DateTimeKind.Local),
-                    UpdatedAtDate = new DateTime(2018, 02, 11, 18, 28, 28, DateTimeKind.Local)
-                },
+            //    new Food()
+            //    {
+            //      //  FoodId = 1,
+            //        Name = "Big Mac",
+            //        Description = "The original Big Mac Hamburger",
+            //        Cost = 32,
+            //        Restaurants = 2,
+            //        CreatedAtDate = new DateTime(2017, 07, 11, 13, 38,13, DateTimeKind.Local),
+            //        UpdatedAtDate = new DateTime(2018, 02, 11, 18, 28, 28, DateTimeKind.Local)
+            //    },
 
-                new Food()
-                {
-                  //  FoodId = 2,
-                    Name = "Chicken Mac",
-                    Description = "The original big mac, but with a chicken fillet!",
-                    Cost = 38,
-                    RestaurantId = 2,
-                    CreatedAtDate = new DateTime(2012, 09, 14, 13, 21, 19, DateTimeKind.Local),
-                    UpdatedAtDate = new DateTime(2018, 10, 01, 16, 20, 12, DateTimeKind.Local)
+            //    new Food()
+            //    {
+            //      //  FoodId = 2,
+            //        Name = "Chicken Mac",
+            //        Description = "The original big mac, but with a chicken fillet!",
+            //        Cost = 38,
+            //        Restaurants = 2,
+            //        CreatedAtDate = new DateTime(2012, 09, 14, 13, 21, 19, DateTimeKind.Local),
+            //        UpdatedAtDate = new DateTime(2018, 10, 01, 16, 20, 12, DateTimeKind.Local)
 
-                },
+            //    },
 
-                new Food()
-                {
-                  //  FoodId = 3,
-                    Name = "Streetwise 3",
-                    Description = "2 Pieces of chicken, and a bowl of mash",
-                    Cost = 29,
-                    RestaurantId = 1,
-                    CreatedAtDate = new DateTime(2012, 04, 12, 20, 21, 38, DateTimeKind.Local),
-                    UpdatedAtDate = new DateTime(2017, 02, 11, 19, 21,40, DateTimeKind.Local)
-                },
+            //    new Food()
+            //    {
+            //      //  FoodId = 3,
+            //        Name = "Streetwise 3",
+            //        Description = "2 Pieces of chicken, and a bowl of mash",
+            //        Cost = 29,
+            //        Restaurants = 1,
+            //        CreatedAtDate = new DateTime(2012, 04, 12, 20, 21, 38, DateTimeKind.Local),
+            //        UpdatedAtDate = new DateTime(2017, 02, 11, 19, 21,40, DateTimeKind.Local)
+            //    },
 
-                new Food()
-                {
-                    //  FoodId = 4,
-                    Name = "Hawaiian Meal",
-                    Description = "A chicken burger with a pineapple ring",
-                    Cost = 45,
-                    RestaurantId = 1,
-                    CreatedAtDate = new DateTime(2012, 04, 12, 10, 12, 20, DateTimeKind.Local),
-                    UpdatedAtDate = new DateTime(2017, 02, 11, 18, 20, 11, DateTimeKind.Local)
-                },
+            //    new Food()
+            //    {
+            //        //  FoodId = 4,
+            //        Name = "Hawaiian Meal",
+            //        Description = "A chicken burger with a pineapple ring",
+            //        Cost = 45,
+            //        Restaurants = 1,
+            //        CreatedAtDate = new DateTime(2012, 04, 12, 10, 12, 20, DateTimeKind.Local),
+            //        UpdatedAtDate = new DateTime(2017, 02, 11, 18, 20, 11, DateTimeKind.Local)
+            //    },
 
-                new Food()
-                {
-                   // FoodId = 5,
-                    Name = "Chicken Pops",
-                    Description = "It's just that, chicken pops",
-                    Cost = 16,
-                    RestaurantId = 1,
-                    CreatedAtDate = new DateTime(2012, 04, 12, 16, 20, 18, DateTimeKind.Local),
-                    UpdatedAtDate = new DateTime(2017, 02, 11, 18, 12, 11, DateTimeKind.Local)
-                },
+            //    new Food()
+            //    {
+            //       // FoodId = 5,
+            //        Name = "Chicken Pops",
+            //        Description = "It's just that, chicken pops",
+            //        Cost = 16,
+            //        Restaurants = 1,
+            //        CreatedAtDate = new DateTime(2012, 04, 12, 16, 20, 18, DateTimeKind.Local),
+            //        UpdatedAtDate = new DateTime(2017, 02, 11, 18, 12, 11, DateTimeKind.Local)
+            //    },
 
-                new Food()
-                {
-                   // FoodId = 6,
-                    Name = "Quarter Chicken",
-                    Description = "Quarter of a chicken, grilled to perfection",
-                    Cost = 65,
-                    RestaurantId = 3,
-                    CreatedAtDate = new DateTime(2012, 04, 12, 18, 21, 20, DateTimeKind.Local),
-                    UpdatedAtDate = new DateTime(2017, 02, 11, 09, 12, 22, DateTimeKind.Local)
-                },
+            //    new Food()
+            //    {
+            //       // FoodId = 6,
+            //        Name = "Quarter Chicken",
+            //        Description = "Quarter of a chicken, grilled to perfection",
+            //        Cost = 65,
+            //        Restaurants = 3,
+            //        CreatedAtDate = new DateTime(2012, 04, 12, 18, 21, 20, DateTimeKind.Local),
+            //        UpdatedAtDate = new DateTime(2017, 02, 11, 09, 12, 22, DateTimeKind.Local)
+            //    },
 
-                new Food()
-                {
-                    // FoodId = 7,
-                    Name = "Chicken Salad",
-                    Description = "A chicken salad.",
-                    Cost = 45,
-                    RestaurantId = 3,
-                    CreatedAtDate = new DateTime(2012, 04, 12, 11, 18, 20, DateTimeKind.Local),
-                    UpdatedAtDate = new DateTime(2017, 02, 11, 18, 12, 22, DateTimeKind.Local)
-                },
+            //    new Food()
+            //    {
+            //        // FoodId = 7,
+            //        Name = "Chicken Salad",
+            //        Description = "A chicken salad.",
+            //        Cost = 45,
+            //        Restaurants = 3,
+            //        CreatedAtDate = new DateTime(2012, 04, 12, 11, 18, 20, DateTimeKind.Local),
+            //        UpdatedAtDate = new DateTime(2017, 02, 11, 18, 12, 22, DateTimeKind.Local)
+            //    },
 
-                new Food(){
+            //    new Food(){
 
-                    Name = "Happy meal",
-                    Description = "A kiddies meal!",
-                    Cost = 35,
-                    RestaurantId = 2,
-                    CreatedAtDate = new DateTime( 2013, 02, 01, 18, 20, 20, DateTimeKind.Local),
-                    UpdatedAtDate = new DateTime( 2018, 01, 11, 10, 22, 29, DateTimeKind.Local)
-                }
+            //        Name = "Happy meal",
+            //        Description = "A kiddies meal!",
+            //        Cost = 35,
+            //        Restaurants = ,
+            //        CreatedAtDate = new DateTime( 2013, 02, 01, 18, 20, 20, DateTimeKind.Local),
+            //        UpdatedAtDate = new DateTime( 2018, 01, 11, 10, 22, 29, DateTimeKind.Local)
+            //    }
 
-            };
+            //};
 
             var restaurants = new List<Restaurant>()
                 {
@@ -168,7 +168,11 @@ namespace GoDeliverWebApp.DatabaseData
                        // RestaurantId = 0,
                         Name = "KFC",
                         Adress = "13 Plattekloof Street",
-
+                        Foods = new List<Food> {
+                            new Food("Happy meal", "A kiddies meal!", 35, 
+                                new DateTime( 2013, 02, 01, 18, 20, 20, DateTimeKind.Local),
+                                new DateTime( 2018, 01, 11, 10, 22, 29, DateTimeKind.Local))
+                        },
                         CreatedAtDate = new DateTime(2011,11,11, 17, 28, 14, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2016, 03, 12, 12, 22, 23, DateTimeKind.Local)
                     },
@@ -218,10 +222,7 @@ namespace GoDeliverWebApp.DatabaseData
                         Name = "Tikkaways",
                         Adress = "Shop 68, N1 City",
 
-                        foods = new List<Food>()
-                        {
-
-                        },
+                        
                         CreatedAtDate = new DateTime(2010, 02, 02, 00, 00, 00, DateTimeKind.Local),
                         UpdatedAtDate = new DateTime(2012, 12, 12, 01, 01, 01, DateTimeKind.Local)
                     }
@@ -285,7 +286,7 @@ namespace GoDeliverWebApp.DatabaseData
             //    context.Orders.AddRange(orders);
             context.Drivers.AddRange(drivers);
             context.Restaurants.AddRange(restaurants);
-           context.Foods.AddRange(foods);
+          // context.Foods.AddRange(foods);
            context.Customers.AddRange(customers);
             
            context.SaveChanges();

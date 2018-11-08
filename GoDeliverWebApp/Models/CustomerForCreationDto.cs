@@ -18,9 +18,6 @@ namespace GoDeliverWebApp.Models
         //[JsonProperty("adress")]
         public string Adress { get; set; }
 
-       // [JsonProperty("mobileNr")]
-        public string MobileNr { get; set; }
-
         //[JsonProperty("createdAtDate")]
         public DateTime CreatedAtDate { get; set; }
 
