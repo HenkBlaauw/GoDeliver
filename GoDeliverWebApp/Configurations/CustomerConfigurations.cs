@@ -14,8 +14,8 @@ namespace GoDeliverWeb.EntityConfigurations
             HasKey(a => a.CustomerId);
             Property(a => a.CustomerId).HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
             Property(a => a.Name).HasMaxLength(255).IsRequired();
-            Property(a => a.CreatedAtDate).HasColumnType("DateTime").IsRequired();
-            Property(a => a.UpdatedAtDate).HasColumnType("DateTime").IsRequired();
+            Property(a => a.CreatedAtDate).IsRequired();
+            Property(a => a.UpdatedAtDate).IsRequired();
             Map(m => m.ToTable("Customers"));
             // ToTable("Customers");
         }

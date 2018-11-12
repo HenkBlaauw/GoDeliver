@@ -15,8 +15,8 @@ namespace GoDeliverWebApp.Configurations
             Property(a => a.Name).HasMaxLength(255).IsRequired();
             Property(a => a.Description).HasMaxLength(255).IsRequired();
             Property(a => a.Cost).HasColumnType("Real").IsRequired();
-            Property(a => a.CreatedAtDate).HasColumnType("DateTime").IsRequired();
-            Property(a => a.UpdatedAtDate).HasColumnType("DateTime").IsRequired();
+            Property(a => a.CreatedAtDate).IsRequired();
+            Property(a => a.UpdatedAtDate).IsRequired();
 
             Map(m => m.ToTable("Foods"));
         }

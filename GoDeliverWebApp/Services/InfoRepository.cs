@@ -21,7 +21,7 @@ namespace GoDeliverWebApp.Services
         
         //IEnumerable<Restaurant> GetRestaurants();
         //Restaurant GetRestaurant(int RestaurantId);
-        //void AddRestaurant(Restaurant restaurant);
+        void AddRestaurant(Restaurant restaurant);
         //void DeleteRestaurant(Restaurant restaurant);
 
         //IEnumerable<Driver> GetDrivers();
@@ -30,8 +30,8 @@ namespace GoDeliverWebApp.Services
         //void DeleteDriver(Driver driver);
 
         //IEnumerable<Order> GetOrders();
-        //Order GetOrder(int orderId);
-        //void AddOrder(Order order);
+        Order GetOrder(int orderId);
+        void AddOrder(Order order);
         //void DeleteOrder(Order order);
 
         //IEnumerable<OrderedFood> GetOrderedFoods();

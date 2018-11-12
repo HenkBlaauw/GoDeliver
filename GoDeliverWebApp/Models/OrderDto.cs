@@ -1,9 +1,10 @@
-﻿using System;
+﻿using GoDeliverWebApp.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GoDeliver.Models
+namespace GoDeliverWebApp.Models
 {
     public class OrderDto
     {
@@ -15,19 +16,17 @@ namespace GoDeliver.Models
 
         public int RestaurantId { get; set; }
 
-        public string Name { get; set; }
-
-        public string Description { get; set; }
-
-        public DateTime TimeAtRestaurant { get; set;}
-
-        public DateTime TimePickedUp { get; set; }
-
-        public DateTime DeliveryTime { get; set; }
+        public Food Foods { get; set; }
 
         public string State { get; set; }
 
-        public float Cost { get; set; }
+        public DateTime TimeAtRestaurant { get; set; }
+
+        public string RestaurantAddress { get; set; }
+
+        public string CustomerAddress { get; set; }
+
+        public float TotalCost { get; set; }
 
         public DateTime CreatedAtDate { get; set; }
 

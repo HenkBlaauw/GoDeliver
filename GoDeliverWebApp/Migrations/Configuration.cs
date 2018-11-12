@@ -21,7 +21,7 @@ namespace GoDeliverWebApp.Migrations
 
                 new Customer()
                 {
-                    CustomerId = 1,
+                    
                     Name = "Jackie",
                     Adress = "123 Test Avenue, Example District, Try City",
                     CreatedAtDate = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local),
@@ -30,7 +30,7 @@ namespace GoDeliverWebApp.Migrations
 
                 new Customer()
                 {
-                    CustomerId = 2,
+                   
                     Name = "Testie",
                     Adress = "15 Examination Street, Template District, Model City",
                     CreatedAtDate = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local),
@@ -39,7 +39,7 @@ namespace GoDeliverWebApp.Migrations
                 },
                 new Customer()
                 {
-                    //CustomerId = 1,
+                    
                     Name = "Henno",
                     Adress = "12 Le Roux Street, Maryland",
 
@@ -170,12 +170,10 @@ namespace GoDeliverWebApp.Migrations
             context.Restaurants.AddOrUpdate(a => a.RestaurantId,
 
                 new Restaurant()
-
                 {
                     // RestaurantId = 0,
                     Name = "KFC",
                     Adress = "13 Plattekloof Street",
-
                     CreatedAtDate = new DateTime(2011, 11, 11, 17, 28, 14, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2016, 03, 12, 12, 22, 23, DateTimeKind.Local)
                 },
@@ -185,7 +183,6 @@ namespace GoDeliverWebApp.Migrations
                     // RestaurantId = 1,
                     Name = "McHenkies's",
                     Adress = "19 High Street",
-
                     CreatedAtDate = new DateTime(2013, 02, 18, 15, 12, 11, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2018, 03, 12, 14, 11, 12, DateTimeKind.Local)
                 },
@@ -195,7 +192,6 @@ namespace GoDeliverWebApp.Migrations
                     //RestaurantId = 2,
                     Name = "Nando's",
                     Adress = "Shop 73, N1 City",
-
                     CreatedAtDate = new DateTime(2012, 07, 11, 14, 11, 48, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2018, 02, 12, 16, 11, 37, DateTimeKind.Local)
                 },
@@ -205,7 +201,6 @@ namespace GoDeliverWebApp.Migrations
                     // RestaurantId = 3,
                     Name = "Ocean's Basket",
                     Adress = "Shop 98, N1 City",
-
                     CreatedAtDate = new DateTime(2018, 02, 11, 17, 11, 45, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2018, 02, 11, 11, 23, 11, DateTimeKind.Local)
                 },
@@ -215,7 +210,6 @@ namespace GoDeliverWebApp.Migrations
                     // RestaurantId = 4,
                     Name = "Burger King",
                     Adress = "Shop 102, Canal Walk, Century City",
-
                     CreatedAtDate = new DateTime(2006, 01, 18, 12, 52, 49, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2016, 08, 09, 07, 23, 11, DateTimeKind.Local)
                 });
@@ -226,12 +220,6 @@ namespace GoDeliverWebApp.Migrations
                 CustomerAddress = "14 Sucker Street, Mainville",
                 DriverId = 5,
                 RestaurantId = 7,
-                Foods = new Food()
-                {
-                    Name = "Chicken mCnuggets",
-                    Cost = 24,
-                    Description = "Yummy, McNuggets!"
-                },
                 RestaurantAddress = "Shop 20, Canal walk",
                 TimeAtRestaurant = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local),
                 TotalCost = 25,
@@ -274,7 +262,7 @@ namespace GoDeliverWebApp.Migrations
 
 
 
-
+            context.SaveChanges();
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.

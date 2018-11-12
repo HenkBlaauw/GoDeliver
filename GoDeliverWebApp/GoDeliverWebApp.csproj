@@ -194,8 +194,9 @@
     <Compile Include="Configurations\OrderConfigurations.cs" />
     <Compile Include="Configurations\RestaurantConfigurations.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\DriverController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\RestaurantController.cs" />
     <Compile Include="DatabaseData\StartingData.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Driver.cs" />
@@ -237,6 +238,14 @@
     <Compile Include="Migrations\201811081214577_AddOrderedFoods5.cs" />
     <Compile Include="Migrations\201811081214577_AddOrderedFoods5.Designer.cs">
       <DependentUpon>201811081214577_AddOrderedFoods5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811090802203_Test2.cs" />
+    <Compile Include="Migrations\201811090802203_Test2.Designer.cs">
+      <DependentUpon>201811090802203_Test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811120837021_Test11.cs" />
+    <Compile Include="Migrations\201811120837021_Test11.Designer.cs">
+      <DependentUpon>201811120837021_Test11.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomerDto.cs" />
@@ -305,6 +314,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Driver\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -359,6 +369,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811081214577_AddOrderedFoods5.resx">
       <DependentUpon>201811081214577_AddOrderedFoods5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811090802203_Test2.resx">
+      <DependentUpon>201811090802203_Test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811120837021_Test11.resx">
+      <DependentUpon>201811120837021_Test11.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

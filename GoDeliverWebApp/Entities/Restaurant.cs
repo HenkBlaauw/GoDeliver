@@ -9,7 +9,6 @@ namespace GoDeliverWebApp.Entities
 {
     public class Restaurant
     {
-        
         public int RestaurantId { get; set; }
 
         public string Name { get; set; }
@@ -21,6 +20,5 @@ namespace GoDeliverWebApp.Entities
         public DateTime CreatedAtDate { get; set; }
         
         public DateTime UpdatedAtDate { get; set; }
-
     }
 }

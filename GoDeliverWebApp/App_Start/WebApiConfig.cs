@@ -19,13 +19,6 @@ namespace GoDeliverWebApp
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-
-            //config.Routes.MapHttpRoute(
-
-            //    name : "Customers",
-            //    routeTemplate : "api/customers"
-            //    );
-
         }
     }
 }

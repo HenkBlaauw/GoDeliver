@@ -9,8 +9,6 @@ namespace GoDeliver.Entities
 {
     public class OrderedFood
     {
-
-        
         public int FoodId { get; set; }
 
         public int OrderId { get; set; }

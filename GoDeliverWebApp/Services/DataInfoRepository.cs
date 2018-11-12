@@ -7,7 +7,6 @@ using System.Web.Http;
 
 namespace GoDeliverWebApp.Services
 {
-    [Route("api/customers")]
     public class DataInfoRepository : InfoRepository
     {
         private GoDeliveryContext _context;
@@ -17,7 +16,6 @@ namespace GoDeliverWebApp.Services
             _context = context;
         }
         
-
         public Customer GetCustomer(int CustomerId)
         {
             return _context.Customers
