@@ -36,8 +36,7 @@ namespace GoDeliverWebApp.DatabaseData
                     //CustomerId = 2,
                     Name = "Johan",
                     Adress = "18 Maritz Street, Maryland",
-                 
-                      CreatedAtDate = new DateTime(2011, 10, 11, 11, 12, 20, DateTimeKind.Local),
+                    CreatedAtDate = new DateTime(2011, 10, 11, 11, 12, 20, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime( 2017, 08, 11, 14, 13, 29, DateTimeKind.Local)
                 },
 
@@ -169,7 +168,7 @@ namespace GoDeliverWebApp.DatabaseData
                         Name = "KFC",
                         Adress = "13 Plattekloof Street",
                         Foods = new List<Food> {
-                            new Food("Happy meal", "A kiddies meal!", 35, 
+                            new Food(1,"Happy meal", "A kiddies meal!", 35, 
                                 new DateTime( 2013, 02, 01, 18, 20, 20, DateTimeKind.Local),
                                 new DateTime( 2018, 01, 11, 10, 22, 29, DateTimeKind.Local))
                         },

@@ -16,7 +16,7 @@ namespace GoDeliverWebApp.Models
 
         public int RestaurantId { get; set; }
 
-        public Food Foods { get; set; }
+        public ICollection<Food> Foods { get; set; }
 
         public string State { get; set; }
 

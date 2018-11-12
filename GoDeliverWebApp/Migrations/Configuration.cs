@@ -3,7 +3,9 @@ namespace GoDeliverWebApp.Migrations
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
+    using System.Data.Entity.Validation;
     using System.Linq;
+    using System.Text;
     using GoDeliverWebApp.Entities;
 
     internal sealed class Configuration : DbMigrationsConfiguration<GoDeliverWebApp.Entities.GoDeliveryContext>
@@ -214,19 +216,19 @@ namespace GoDeliverWebApp.Migrations
                     UpdatedAtDate = new DateTime(2016, 08, 09, 07, 23, 11, DateTimeKind.Local)
                 });
 
-            context.Orders.AddOrUpdate(a => a.OrderId, new Order()
-            {
-                CustomerId = 2,
-                CustomerAddress = "14 Sucker Street, Mainville",
-                DriverId = 5,
-                RestaurantId = 7,
-                RestaurantAddress = "Shop 20, Canal walk",
-                TimeAtRestaurant = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local),
-                TotalCost = 25,
-                CreatedAtDate = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local),
-                UpdatedAtDate = new DateTime(2013, 10, 12, 17, 18, 10, DateTimeKind.Local)
+            //context.Orders.AddOrUpdate(a => a.OrderId, new Order()
+            //{
+            //    CustomerId = 2,
+            //    CustomerAddress = "14 Sucker Street, Mainville",
+            //    DriverId = 5,
+            //    RestaurantId = 7,
+            //    RestaurantAddress = "Shop 20, Canal walk",
+            //    TimeAtRestaurant = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local),
+            //    TotalCost = 25,
+            //    CreatedAtDate = new DateTime(2013, 10, 12, 16, 18, 10, DateTimeKind.Local),
+            //    UpdatedAtDate = new DateTime(2013, 10, 12, 17, 18, 10, DateTimeKind.Local)
 
-            });
+            //});
 
 
             context.Drivers.AddOrUpdate(a => a.DriverId,
@@ -262,7 +264,32 @@ namespace GoDeliverWebApp.Migrations
 
 
 
-            context.SaveChanges();
+             void SaveChanges()
+            {
+                
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    var sb = new StringBuilder();
+                    foreach (var failure in ex.EntityValidationErrors)
+                    {
+                        sb.AppendFormat("{0} failed validation\n", failure.Entry.Entity.GetType());
+                        foreach (var error in failure.ValidationErrors)
+                        {
+                            sb.AppendFormat("- {0} : {1}", error.PropertyName, error.ErrorMessage);
+                            sb.AppendLine();
+                        }
+                    }
+                    throw new DbEntityValidationException(
+                        "Entity Validation Failed - errors follow:\n" +
+                        sb.ToString(), ex
+                    );
+                }
+            }
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.

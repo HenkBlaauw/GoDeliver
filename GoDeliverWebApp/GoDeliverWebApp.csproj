@@ -247,6 +247,10 @@
     <Compile Include="Migrations\201811120837021_Test11.Designer.cs">
       <DependentUpon>201811120837021_Test11.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811121223273_Test21.cs" />
+    <Compile Include="Migrations\201811121223273_Test21.Designer.cs">
+      <DependentUpon>201811121223273_Test21.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomerDto.cs" />
     <Compile Include="Models\CustomerForCreationDto.cs" />
@@ -375,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811120837021_Test11.resx">
       <DependentUpon>201811120837021_Test11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811121223273_Test21.resx">
+      <DependentUpon>201811121223273_Test21.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

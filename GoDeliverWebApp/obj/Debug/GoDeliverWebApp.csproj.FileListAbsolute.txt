@@ -110,3 +110,4 @@ C:\Users\Dev 1\source\repos\GoDeliver\GoDeliverWebApp\obj\Debug\GoDeliverWebApp.
 C:\Users\Dev 1\source\repos\GoDeliver\GoDeliverWebApp\obj\Debug\GoDeliverWebApp.Migrations.AddOrderedFoods5.resources
 C:\Users\Dev 1\source\repos\GoDeliver\GoDeliverWebApp\obj\Debug\GoDeliverWebApp.Migrations.Test2.resources
 C:\Users\Dev 1\source\repos\GoDeliver\GoDeliverWebApp\obj\Debug\GoDeliverWebApp.Migrations.Test11.resources
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliverWebApp\obj\Debug\GoDeliverWebApp.Migrations.Test21.resources

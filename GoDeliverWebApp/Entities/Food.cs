@@ -23,8 +23,9 @@ namespace GoDeliverWebApp.Entities
         
         public DateTime UpdatedAtDate { get; set; }
 
-        public Food(string name, string description, float cost, DateTime createdAtDate, DateTime updatedAtDate)
+        public Food(int foodId, string name, string description, float cost, DateTime createdAtDate, DateTime updatedAtDate)
         {
+            FoodId = foodId;
             Name = name;
             Description = description;
             Cost = cost;
