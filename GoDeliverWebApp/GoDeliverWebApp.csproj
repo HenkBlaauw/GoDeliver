@@ -235,21 +235,9 @@
     <Compile Include="Migrations\201811051353389_EnterData-Force.Designer.cs">
       <DependentUpon>201811051353389_EnterData-Force.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811081214577_AddOrderedFoods5.cs" />
-    <Compile Include="Migrations\201811081214577_AddOrderedFoods5.Designer.cs">
-      <DependentUpon>201811081214577_AddOrderedFoods5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811090802203_Test2.cs" />
-    <Compile Include="Migrations\201811090802203_Test2.Designer.cs">
-      <DependentUpon>201811090802203_Test2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811120837021_Test11.cs" />
-    <Compile Include="Migrations\201811120837021_Test11.Designer.cs">
-      <DependentUpon>201811120837021_Test11.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811121223273_Test21.cs" />
-    <Compile Include="Migrations\201811121223273_Test21.Designer.cs">
-      <DependentUpon>201811121223273_Test21.cs</DependentUpon>
+    <Compile Include="Migrations\201811131206353_Test3.cs" />
+    <Compile Include="Migrations\201811131206353_Test3.Designer.cs">
+      <DependentUpon>201811131206353_Test3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomerDto.cs" />
@@ -371,17 +359,8 @@
     <EmbeddedResource Include="Migrations\201811051353389_EnterData-Force.resx">
       <DependentUpon>201811051353389_EnterData-Force.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811081214577_AddOrderedFoods5.resx">
-      <DependentUpon>201811081214577_AddOrderedFoods5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811090802203_Test2.resx">
-      <DependentUpon>201811090802203_Test2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811120837021_Test11.resx">
-      <DependentUpon>201811120837021_Test11.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811121223273_Test21.resx">
-      <DependentUpon>201811121223273_Test21.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811131206353_Test3.resx">
+      <DependentUpon>201811131206353_Test3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

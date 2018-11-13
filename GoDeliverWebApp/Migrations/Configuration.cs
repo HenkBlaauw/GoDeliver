@@ -1,6 +1,7 @@
 namespace GoDeliverWebApp.Migrations
 {
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Data.Entity.Validation;
@@ -44,7 +45,6 @@ namespace GoDeliverWebApp.Migrations
                     
                     Name = "Henno",
                     Adress = "12 Le Roux Street, Maryland",
-
                     CreatedAtDate = new DateTime(2012, 12, 12, 10, 10, 12, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2013, 04, 12, 08, 39, 10, DateTimeKind.Local)
                 },
@@ -54,7 +54,6 @@ namespace GoDeliverWebApp.Migrations
                     //CustomerId = 2,
                     Name = "Johan",
                     Adress = "18 Maritz Street, Maryland",
-
                     CreatedAtDate = new DateTime(2011, 10, 11, 11, 12, 20, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2017, 08, 11, 14, 13, 29, DateTimeKind.Local)
                 },
@@ -64,7 +63,6 @@ namespace GoDeliverWebApp.Migrations
                     // CustomerId = 3,
                     Name = "Jacques",
                     Adress = "1 Church Street, Maryland",
-
                     CreatedAtDate = new DateTime(2011, 02, 14, 14, 15, 20, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2014, 03, 17, 15, 28, 49, DateTimeKind.Local)
                 },
@@ -74,11 +72,9 @@ namespace GoDeliverWebApp.Migrations
                     //CustomerId = 4,
                     Name = "Sarah",
                     Adress = "7 Miners Street, Maryland",
-
                     CreatedAtDate = new DateTime(2012, 04, 12, 19, 29, 58, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2017, 02, 11, 20, 17, 37, DateTimeKind.Local)
-                }
-                );
+                });
 
             //context.Foods.AddOrUpdate(a => a.FoodId,
             //    new Food()
@@ -176,6 +172,35 @@ namespace GoDeliverWebApp.Migrations
                     // RestaurantId = 0,
                     Name = "KFC",
                     Adress = "13 Plattekloof Street",
+                    Foods = new List<Food>()
+                    {
+
+                        new Food(
+                              1
+                            ,"Chicken"
+                            ,"Chicken pieces"
+                            , 46
+                            , new DateTime(2012,12,12,12,12,12)
+                            , new DateTime(2013,11,11,11,11,11)
+                            ),
+                      new Food(
+                            2
+                            ,"Kiddies Meal"
+                            ,"Chicken burger with chips and a soft drink"
+                            , 35
+                            , new DateTime(2012,12,12,12,12,12)
+                            , new DateTime(2013,11,11,11,11,11)
+                            ),
+                      new Food(
+                            3
+                            ,"Box Meal"
+                            ,"Chicken Wrap with chips and a soft drink"
+                            , 65
+                            , new DateTime(2012,12,12,12,12,12)
+                            , new DateTime(2013,11,11,11,11,11)
+                            ),
+
+                    },
                     CreatedAtDate = new DateTime(2011, 11, 11, 17, 28, 14, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2016, 03, 12, 12, 22, 23, DateTimeKind.Local)
                 },

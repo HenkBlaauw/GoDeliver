@@ -7,13 +7,13 @@ namespace GoDeliverWebApp.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Test11 : IMigrationMetadata
+    public sealed partial class Test3 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Test11));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Test3));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811120837021_Test11"; }
+            get { return "201811131206353_Test3"; }
         }
         
         string IMigrationMetadata.Source
