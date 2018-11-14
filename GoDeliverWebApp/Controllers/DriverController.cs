@@ -14,7 +14,7 @@ namespace GoDeliverWebApp.Controllers
     {
         GoDeliveryContext context = new GoDeliveryContext();
         private InfoRepository _orderRepository;
-        private InfoRepository _driverInfoRepository;
+        
         
         //Get order from restaurant
         [Route("api/drivers/orders/{driverid}")]

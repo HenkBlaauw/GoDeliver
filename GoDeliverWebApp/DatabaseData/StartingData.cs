@@ -168,7 +168,7 @@ namespace GoDeliverWebApp.DatabaseData
                         Name = "KFC",
                         Adress = "13 Plattekloof Street",
                         Foods = new List<Food> {
-                            new Food(1,"Happy meal", "A kiddies meal!", 35, 
+                            new Food("Happy meal", "A kiddies meal!", 35, 
                                 new DateTime( 2013, 02, 01, 18, 20, 20, DateTimeKind.Local),
                                 new DateTime( 2018, 01, 11, 10, 22, 29, DateTimeKind.Local))
                         },

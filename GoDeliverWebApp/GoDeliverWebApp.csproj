@@ -207,37 +207,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811020907095_Initial.cs" />
-    <Compile Include="Migrations\201811020907095_Initial.Designer.cs">
-      <DependentUpon>201811020907095_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811021349150_SecondMigration.cs" />
-    <Compile Include="Migrations\201811021349150_SecondMigration.Designer.cs">
-      <DependentUpon>201811021349150_SecondMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811051023319_Test.cs" />
-    <Compile Include="Migrations\201811051023319_Test.Designer.cs">
-      <DependentUpon>201811051023319_Test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811051026469_Test1.cs" />
-    <Compile Include="Migrations\201811051026469_Test1.Designer.cs">
-      <DependentUpon>201811051026469_Test1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811051329175_TestNow.cs" />
-    <Compile Include="Migrations\201811051329175_TestNow.Designer.cs">
-      <DependentUpon>201811051329175_TestNow.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811051351349_EnterData.cs" />
-    <Compile Include="Migrations\201811051351349_EnterData.Designer.cs">
-      <DependentUpon>201811051351349_EnterData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811051353389_EnterData-Force.cs" />
-    <Compile Include="Migrations\201811051353389_EnterData-Force.Designer.cs">
-      <DependentUpon>201811051353389_EnterData-Force.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811131206353_Test3.cs" />
-    <Compile Include="Migrations\201811131206353_Test3.Designer.cs">
-      <DependentUpon>201811131206353_Test3.cs</DependentUpon>
+    <Compile Include="Migrations\201811140920187_DeletedMigrations.cs" />
+    <Compile Include="Migrations\201811140920187_DeletedMigrations.Designer.cs">
+      <DependentUpon>201811140920187_DeletedMigrations.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomerDto.cs" />
@@ -338,29 +310,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811020907095_Initial.resx">
-      <DependentUpon>201811020907095_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811021349150_SecondMigration.resx">
-      <DependentUpon>201811021349150_SecondMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811051023319_Test.resx">
-      <DependentUpon>201811051023319_Test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811051026469_Test1.resx">
-      <DependentUpon>201811051026469_Test1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811051329175_TestNow.resx">
-      <DependentUpon>201811051329175_TestNow.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811051351349_EnterData.resx">
-      <DependentUpon>201811051351349_EnterData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811051353389_EnterData-Force.resx">
-      <DependentUpon>201811051353389_EnterData-Force.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811131206353_Test3.resx">
-      <DependentUpon>201811131206353_Test3.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811140920187_DeletedMigrations.resx">
+      <DependentUpon>201811140920187_DeletedMigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

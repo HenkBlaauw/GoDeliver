@@ -19,7 +19,7 @@ namespace GoDeliverWebApp.Migrations
         protected override void Seed(GoDeliverWebApp.Entities.GoDeliveryContext context)
         {
             //  This method will be called after migrating to the latest version.
-
+            
             context.Customers.AddOrUpdate(a => a.CustomerId,
 
                 new Customer()
@@ -172,35 +172,36 @@ namespace GoDeliverWebApp.Migrations
                     // RestaurantId = 0,
                     Name = "KFC",
                     Adress = "13 Plattekloof Street",
-                    Foods = new List<Food>()
-                    {
+                    Foods = null,
+                    //new List<Food>()
+                    //{
 
-                        new Food(
-                              1
-                            ,"Chicken"
-                            ,"Chicken pieces"
-                            , 46
-                            , new DateTime(2012,12,12,12,12,12)
-                            , new DateTime(2013,11,11,11,11,11)
-                            ),
-                      new Food(
-                            2
-                            ,"Kiddies Meal"
-                            ,"Chicken burger with chips and a soft drink"
-                            , 35
-                            , new DateTime(2012,12,12,12,12,12)
-                            , new DateTime(2013,11,11,11,11,11)
-                            ),
-                      new Food(
-                            3
-                            ,"Box Meal"
-                            ,"Chicken Wrap with chips and a soft drink"
-                            , 65
-                            , new DateTime(2012,12,12,12,12,12)
-                            , new DateTime(2013,11,11,11,11,11)
-                            ),
+                      //  new Food(
+                      //        1
+                      //      ,"Chicken"
+                      //      ,"Chicken pieces"
+                      //      , 46
+                      //      , new DateTime(2012,12,12,12,12,12)
+                      //      , new DateTime(2013,11,11,11,11,11)
+                      //      ),
+                      //new Food(
+                      //      2
+                      //      ,"Kiddies Meal"
+                      //      ,"Chicken burger with chips and a soft drink"
+                      //      , 35
+                      //      , new DateTime(2012,12,12,12,12,12)
+                      //      , new DateTime(2013,11,11,11,11,11)
+                      //      ),
+                      //new Food(
+                      //      3
+                      //      ,"Box Meal"
+                      //      ,"Chicken Wrap with chips and a soft drink"
+                      //      , 65
+                      //      , new DateTime(2012,12,12,12,12,12)
+                      //      , new DateTime(2013,11,11,11,11,11)
+                      //      ),
 
-                    },
+                   // },
                     CreatedAtDate = new DateTime(2011, 11, 11, 17, 28, 14, DateTimeKind.Local),
                     UpdatedAtDate = new DateTime(2016, 03, 12, 12, 22, 23, DateTimeKind.Local)
                 },
@@ -287,7 +288,7 @@ namespace GoDeliverWebApp.Migrations
 
             );
 
-
+            SaveChanges();
 
              void SaveChanges()
             {

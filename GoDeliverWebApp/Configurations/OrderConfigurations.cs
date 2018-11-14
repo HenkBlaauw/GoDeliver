@@ -19,7 +19,7 @@ namespace GoDeliverWebApp.EntityConfigurations
             Property(a => a.RestaurantAddress).HasMaxLength(255).IsRequired();
             Property(a => a.TimeAtRestaurant);
             // HasRequired(Foods)(s => s.Foods).WithMany(g => g.OrderedFoods).HasForeignKey<int>(s => s.FoodId);
-            HasMany<Food>(t => t.Foods);
+           // HasMany<Food>(t => t.Foods);
             Map(a => a.ToTable("Orders"));
         }       
     }

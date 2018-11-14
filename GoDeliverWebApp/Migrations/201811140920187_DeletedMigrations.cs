@@ -3,10 +3,15 @@ namespace GoDeliverWebApp.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Test3 : DbMigration
+    public partial class DeletedMigrations : DbMigration
     {
         public override void Up()
         {
+            if (!System.Diagnostics.Debugger.IsAttached)
+            {
+                System.Diagnostics.Debugger.Launch();
+            }
+
             DropForeignKey("dbo.Foods", "RestaurantId", "dbo.Restaurants");
             DropIndex("dbo.Foods", new[] { "RestaurantId" });
             DropIndex("dbo.Orders", new[] { "Foods_FoodId" });

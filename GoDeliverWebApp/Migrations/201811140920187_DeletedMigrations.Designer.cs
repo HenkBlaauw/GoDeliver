@@ -5,15 +5,17 @@ namespace GoDeliverWebApp.Migrations
     using System.Data.Entity.Migrations;
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
-    
+
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Test : IMigrationMetadata
+    public sealed partial class DeletedMigrations : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Test));
+         
+
+        private readonly ResourceManager Resources = new ResourceManager(typeof(DeletedMigrations));
         
         string IMigrationMetadata.Id
         {
-            get { return "201811051023319_Test"; }
+            get { return "201811140920187_DeletedMigrations"; }
         }
         
         string IMigrationMetadata.Source
