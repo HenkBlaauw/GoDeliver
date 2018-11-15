@@ -99,5 +99,5 @@ C:\Users\Dev 1\source\repos\GoDeliver\GoDeliverWebApp\obj\Debug\GoDeliverWebApp.
 C:\Users\Dev 1\source\repos\GoDeliver\GoDeliverWebApp\obj\Debug\GoDeliverWebApp.dll
 C:\Users\Dev 1\source\repos\GoDeliver\GoDeliverWebApp\obj\Debug\GoDeliverWebApp.pdb
 C:\Users\Dev 1\source\repos\GoDeliver\GoDeliverWebApp\obj\Debug\GoDeliverWebApp.csprojAssemblyReference.cache
-C:\Users\Dev 1\source\repos\GoDeliver\GoDeliverWebApp\obj\Debug\GoDeliverWebApp.Migrations.DeletedMigrations.resources
+C:\Users\Dev 1\source\repos\GoDeliver\GoDeliverWebApp\obj\Debug\GoDeliverWebApp.Migrations.JohanSaves.resources
 C:\Users\Dev 1\source\repos\GoDeliver\GoDeliverWebApp\obj\Debug\GoDeliverWebApp.csproj.GenerateResource.cache

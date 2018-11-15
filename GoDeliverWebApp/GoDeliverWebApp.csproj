@@ -207,9 +207,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201811140920187_DeletedMigrations.cs" />
-    <Compile Include="Migrations\201811140920187_DeletedMigrations.Designer.cs">
-      <DependentUpon>201811140920187_DeletedMigrations.cs</DependentUpon>
+    <Compile Include="Migrations\201811150707353_JohanSaves.cs" />
+    <Compile Include="Migrations\201811150707353_JohanSaves.Designer.cs">
+      <DependentUpon>201811150707353_JohanSaves.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CustomerDto.cs" />
@@ -310,8 +310,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201811140920187_DeletedMigrations.resx">
-      <DependentUpon>201811140920187_DeletedMigrations.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201811150707353_JohanSaves.resx">
+      <DependentUpon>201811150707353_JohanSaves.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
