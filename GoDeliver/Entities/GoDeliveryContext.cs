@@ -24,7 +24,10 @@ namespace GoDeliver.Entities
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderedFood> OrderedFoods { get; set; }
 
-
+        public void SeedDatabase()
+        {
+            // GoDeliverWebApp.Migrations.Configuration conf = new Migrations.Configuration();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

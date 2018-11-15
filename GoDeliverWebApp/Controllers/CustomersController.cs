@@ -116,13 +116,13 @@ namespace GoDeliverWebApp.Controllers
 
             List<Food> foods = _restaurantInfoRepository.GetForRestaurant(restaurantId);
 
-    
+            
 
 
       
-            var food2Return = JsonConvert.SerializeObject(foods).ToString();
-            string jsonFormatted = JValue.Parse(food2Return).ToString(Formatting.Indented);
-            return Ok(jsonFormatted);
+          //  var food2Return = JsonConvert.SerializeObject(foods).ToString();
+            
+            return Json(foods);
 
 
         }
