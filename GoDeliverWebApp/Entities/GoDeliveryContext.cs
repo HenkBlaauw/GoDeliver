@@ -32,6 +32,11 @@ namespace GoDeliverWebApp.Entities
             }
         }
 
+        public GoDeliveryContext(string connectionString)
+        {
+            this.Database.Connection.ConnectionString = connectionString;
+        }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new CustomerConfigurations());

@@ -144,5 +144,12 @@ namespace GoDeliverWebApp.Services
         {
             throw new System.NotImplementedException();
         }
+
+        public List<Food> GetForRestaurant(int restaurantId)
+        {
+            return _context.Foods.Where(x =>
+                x.RestaurantId == restaurantId
+            ).ToList();
+        }
     }
 }

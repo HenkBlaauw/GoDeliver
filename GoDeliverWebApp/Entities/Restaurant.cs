@@ -16,7 +16,7 @@ namespace GoDeliverWebApp.Entities
         public string Adress { get; set; }
       
         public ICollection<Food> Foods {get; set;}
-        
+              
         public DateTime CreatedAtDate { get; set; }
         
         public DateTime UpdatedAtDate { get; set; }

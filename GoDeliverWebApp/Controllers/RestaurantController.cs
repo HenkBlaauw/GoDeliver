@@ -102,7 +102,7 @@ namespace GoDeliverWebApp.Controllers
 
         [Route("api/restaurants/makerestaurants")]
         [HttpPost()]
-        public IHttpActionResult CreateRestaurant([FromBody]RestaurantDto restaurantInfo)
+        public IHttpActionResult CreateRestaurant([FromBody]RestaurantInfoDto restaurantInfo)
         {
 
             var restaurantError = "Please look at the data and make sure it's not empty, incorrect, or has values that are the same!";

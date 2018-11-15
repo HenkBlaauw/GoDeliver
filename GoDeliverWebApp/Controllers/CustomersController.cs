@@ -2,8 +2,11 @@
 using GoDeliverWebApp.Models;
 using GoDeliverWebApp.Services;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web.Http;
 namespace GoDeliverWebApp.Controllers
@@ -14,6 +17,8 @@ namespace GoDeliverWebApp.Controllers
         private InfoRepository _customerInfoRepository;
         GoDeliveryContext context = new GoDeliveryContext();
         private InfoRepository _orderRepository;
+        private InfoRepository _restaurantInfoRepository;
+
 
         public CustomersController(InfoRepository customerInfoRepository)
         {
@@ -26,6 +31,7 @@ namespace GoDeliverWebApp.Controllers
             _context = context;
             _orderRepository = new DataInfoRepository(context);
             _customerInfoRepository = new DataInfoRepository(context);
+            _restaurantInfoRepository = new DataInfoRepository(context);
         }
 
 
@@ -85,7 +91,7 @@ namespace GoDeliverWebApp.Controllers
         }
 
         //Gets a list of restaurants
-        [Route("restaurants")]
+        [Route("api/restaurants")]
         [HttpGet()]
         public IHttpActionResult GetRestaurants()
         {
@@ -94,12 +100,41 @@ namespace GoDeliverWebApp.Controllers
             IQueryable<RestaurantDto> restaurants = from b in context.Restaurants
                                                 select new RestaurantDto()
                                                 {
-                                                    RestaurantId = b.RestaurantId,
-                                                    Name = b.Name
+                                                    Name = b.Name,
+                                                    Adress = b.Adress                                                    
                                                 };
 
-            return Ok(restaurants);
+            return Ok(restaurants.OrderBy( t=> t.Name));
         }
+
+        [Route("api/restaurants/{restaurantId}/foods")]
+        [HttpGet()]
+        public IHttpActionResult GetFoodForRestaurant([FromUri] int restaurantId)
+        {
+            Restaurant restaurant = _restaurantInfoRepository.GetRestaurant(restaurantId);
+            GoDeliveryContext context = new GoDeliveryContext();
+
+            List<Food> foods = _restaurantInfoRepository.GetForRestaurant(restaurantId);
+
+    
+
+
+      
+            var food2Return = JsonConvert.SerializeObject(foods).ToString();
+            string jsonFormatted = JValue.Parse(food2Return).ToString(Formatting.Indented);
+            return Ok(jsonFormatted);
+
+
+        }
+
+
+
+
+
+
+
+
+
 
         //Call when a customer orders food
         [Route("customers/createorder")]

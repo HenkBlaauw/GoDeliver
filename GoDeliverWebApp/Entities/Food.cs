@@ -31,5 +31,11 @@ namespace GoDeliverWebApp.Entities
             CreatedAtDate = createdAtDate;
             UpdatedAtDate = updatedAtDate;
         }
+
+
+        public Food()
+        {
+
+        }
     }
 }

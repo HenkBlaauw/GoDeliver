@@ -18,9 +18,10 @@ namespace GoDeliverWebApp.Services
         //Food GetFood(int FoodId);
         //void AddFood(Food food);
         //void DeleteFood(Food food);
-        
-        //IEnumerable<Restaurant> GetRestaurants();
-        //Restaurant GetRestaurant(int RestaurantId);
+        List<Food> GetForRestaurant(int restaurantId);
+
+       // IQueryable<Restaurant> GetRestaurants();
+        Restaurant GetRestaurant(int RestaurantId);
         void AddRestaurant(Restaurant restaurant);
         //void DeleteRestaurant(Restaurant restaurant);
 
