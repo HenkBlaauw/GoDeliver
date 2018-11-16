@@ -15,7 +15,7 @@ namespace GoDeliverWebApp.Services
         void DeleteCustomer(Customer customer);
 
         //IEnumerable<Food> GetFoods();
-        //Food GetFood(int FoodId);
+        Food GetFood(int FoodId);
         //void AddFood(Food food);
         //void DeleteFood(Food food);
         List<Food> GetForRestaurant(int restaurantId);

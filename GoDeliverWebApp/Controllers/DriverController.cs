@@ -41,7 +41,7 @@ namespace GoDeliverWebApp.Controllers
                                           };
             if (orders == null)
             {
-                return StatusCode(System.Net.HttpStatusCode.BadRequest);
+                return BadRequest();
             }
 
 
@@ -49,15 +49,7 @@ namespace GoDeliverWebApp.Controllers
 
 
             return Ok(whereQuery);
-            //return whereQuery.ToList();
-
-            //for(int i = 0; i < orders.Rows.Count; i++)
-            //{
-            //    if (driverId == orders.DriverId[i])
-            //    {
-
-            //    }
-            //}
+            
         }
 
         //Driver accepted order
@@ -78,7 +70,30 @@ namespace GoDeliverWebApp.Controllers
 
             return Ok("Be at "+ order.RestaurantAddress + " at " + order.TimeAtRestaurant+ ", and deliver the food to " + order.CustomerAddress);
         }
-        
+
+        //Driver denies order
+        [Route("api/orders/deny/{orderId}")]
+        [HttpPatch()]
+        public IHttpActionResult DenyOrder([FromUri]int orderId)
+        {
+            Order order = _orderRepository.GetOrder(orderId);
+
+            if (order == null)
+            {
+                return BadRequest();
+            }
+
+            order.State = "Waiting for driver";
+
+            _orderRepository.Save();
+
+            return Ok("The order will be sent to another driver");
+        }
+
+
+
+
+
         //Change state to delivered
         [Route("api/order/delivered/{orderid}")]
         [HttpPatch()]

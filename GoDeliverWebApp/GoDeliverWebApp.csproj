@@ -189,6 +189,7 @@
     <Compile Include="Models\DriverDto.cs" />
     <Compile Include="Models\FoodForRestaurantDto.cs" />
     <Compile Include="Models\FoodsDto.cs" />
+    <Compile Include="Models\OrderCreationDto.cs" />
     <Compile Include="Models\OrderDto.cs" />
     <Compile Include="Models\RestaurantDto.cs" />
     <Compile Include="Models\RestaurantInfoDto.cs" />

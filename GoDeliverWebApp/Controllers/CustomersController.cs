@@ -11,6 +11,7 @@ using System.Linq;
 using System.Web.Http;
 namespace GoDeliverWebApp.Controllers
 {
+    
 
     public class CustomersController : ApiController
     {
@@ -18,7 +19,7 @@ namespace GoDeliverWebApp.Controllers
         GoDeliveryContext context = new GoDeliveryContext();
         private InfoRepository _orderRepository;
         private InfoRepository _restaurantInfoRepository;
-
+        
 
         public CustomersController(InfoRepository customerInfoRepository)
         {
@@ -113,21 +114,25 @@ namespace GoDeliverWebApp.Controllers
         {
             Restaurant restaurant = _restaurantInfoRepository.GetRestaurant(restaurantId);
             GoDeliveryContext context = new GoDeliveryContext();
-
             List<Food> foods = _restaurantInfoRepository.GetForRestaurant(restaurantId);
-
-            
-
-
-      
-          //  var food2Return = JsonConvert.SerializeObject(foods).ToString();
             
             return Json(foods);
-
-
         }
-
-
+                                   
+        //Add food to Order
+        //[Route("customers/addFood/{foodIds}")]
+        //[HttpPatch()]
+        //public IHttpActionResult AddFood([FromUri]string foodIds)
+        //{
+        //    //for (int i = 0; i < foodIds.Length; i++)
+        //    //{
+        //    //    var food = _restaurantInfoRepository.GetFood(foodId);
+        //    //    food4Order.Add(food);
+        //    //}
+        //   // return Json("Your food has been added to the order");
+        //    //Testing food4Order for recurring calls
+        //    return Json(food4Order);
+        //}
 
 
 
@@ -137,37 +142,56 @@ namespace GoDeliverWebApp.Controllers
 
 
         //Call when a customer orders food
-        [Route("customers/createorder")]
+        [Route("api/customers/createorder/{customerId}")]
         [HttpPost()]
-        public IHttpActionResult CreateOrder([FromBody]Order orderInfo)
+        public IHttpActionResult CreateOrder([FromUri] int CustomerId, [FromBody]OrderCreationDto orderInfo)
         {
-
+           // var food4Order = new List<Food>();
             Order order = new Order();
-
+            order.TotalCost = 0;
+            ICollection<Food> food4Order = new List<Food>();
             if (orderInfo == null)
             {
                 return BadRequest("Sorry, but the customer's info you entered is empty");
             }
 
-            order.Foods = orderInfo.Foods;
-            order.CustomerAddress = orderInfo.CustomerAddress;
-            order.RestaurantId = orderInfo.RestaurantId;
-            order.TimeAtRestaurant = orderInfo.TimeAtRestaurant;
-            order.TotalCost = orderInfo.TotalCost;
-            order.State = "Sent";
-            order.RestaurantAddress = orderInfo.RestaurantAddress;
-            order.TimeAtRestaurant = orderInfo.CreatedAtDate;
-            order.UpdatedAtDate = DateTime.UtcNow;
-            order.CreatedAtDate = orderInfo.CreatedAtDate;
+            var foodTest = orderInfo.FoodId;
+            foodTest.ToArray();
 
+
+            foreach(int i in foodTest)
+            {
+                food4Order.Add(_restaurantInfoRepository.GetFood(i));
+            }
+
+            order.CustomerId = CustomerId;
+            order.Foods = food4Order;
+
+
+            foreach( Food food in  food4Order)
+            {
+                order.TotalCost = order.TotalCost+  food4Order.Select(a => a.Cost).First();
+            }
+
+
+
+            var value = order.Foods.First();
+            var resId = Convert.ToInt32(value.RestaurantId);
+            order.State = "Sent";
+            var restAddress = _restaurantInfoRepository.GetRestaurant(resId).Adress;
+            order.RestaurantAddress = restAddress;
+            order.CustomerAddress = _restaurantInfoRepository.GetCustomer(CustomerId).Adress;
+            order.UpdatedAtDate = DateTime.UtcNow;
+            order.CreatedAtDate = DateTime.UtcNow;
+            order.TimeAtRestaurant = order.CreatedAtDate.AddMinutes(21);
             _orderRepository.AddOrder(order);
 
             if (!_orderRepository.Save())
             {
                 return BadRequest();
             }
-
-            return Ok("The order has been sent to the restaurant. You will be notified about the order's progression");
+          
+            return Json("The order has been sent to the restaurant. You will be notified about the order's progression");
         }
     }
 }

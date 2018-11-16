@@ -59,7 +59,7 @@ namespace GoDeliverWebApp.Controllers
         }
 
 
-        [Route("api/orders/{orderid}")]
+        [Route("api/restaurant/orders/accept/{orderid}")]
         [HttpPatch()]
         public IHttpActionResult ConfirmOrder([FromUri] int OrderId)
         {
@@ -80,12 +80,34 @@ namespace GoDeliverWebApp.Controllers
             return Ok(currentOrder);
         }
 
-        [Route("api/orders/assignDriver")]
+        [Route("api/restaurant/orders/deny/{orderid}")]
         [HttpPatch()]
-        public IHttpActionResult AssignDriver([FromUri] int driverId, [FromBody] int OrderId)
+        public IHttpActionResult DenyOrder([FromUri] int OrderId)
         {
+
             GoDeliveryContext context = new GoDeliveryContext();
             var currentOrder = _orderRepository.GetOrder(OrderId);
+
+            if (currentOrder == null)
+            {
+                return StatusCode(HttpStatusCode.Gone);
+            }
+
+            currentOrder.State = "Order Denied";
+            currentOrder.UpdatedAtDate = DateTime.UtcNow;
+
+            _orderRepository.Save();
+
+            return Ok(currentOrder);
+        }
+
+
+        [Route("api/orders/assignDriver/{driverId}/{orderId}")]
+        [HttpPatch()]
+        public IHttpActionResult AssignDriver([FromUri] int driverId, int orderId)
+        {
+            GoDeliveryContext context = new GoDeliveryContext();
+            var currentOrder = _orderRepository.GetOrder(orderId);
 
             if (currentOrder == null)
             {
@@ -96,7 +118,7 @@ namespace GoDeliverWebApp.Controllers
             currentOrder.DriverId = driverId;
             _orderRepository.Save();
 
-            return Ok(currentOrder);
+            return Ok("The driver you assigned will be notified of the order, and will be at the restaurant at: " + currentOrder.TimeAtRestaurant);
         }
 
 
