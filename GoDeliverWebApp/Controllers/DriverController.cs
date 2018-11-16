@@ -22,8 +22,8 @@ namespace GoDeliverWebApp.Controllers
         public IHttpActionResult GetOrder([FromUri] int driverId)
         {
             GoDeliveryContext context = new GoDeliveryContext();
+            
             IQueryable<OrderDto> orders = from b in context.Orders
-
                                           select new OrderDto()
                                           {
                                               OrderId = b.OrderId,
@@ -37,21 +37,28 @@ namespace GoDeliverWebApp.Controllers
                                               TotalCost = b.TotalCost,
                                               CreatedAtDate = b.CreatedAtDate,
                                               UpdatedAtDate = DateTime.UtcNow
-
                                           };
+
+
             if (orders == null)
             {
                 return BadRequest();
             }
 
+            List<OrderDto> driverOrder = orders.Where(x => x.DriverId == driverId).ToList();
 
-            IQueryable<Order> whereQuery = context.Orders.Where(x => x.DriverId == driverId);
+            //var testOrder = orders.Where(a => a.DriverId.Equals(driverId));
+            //var driverOrders = _orderRepository.GetOrder();
+            var assignedOrder = driverOrder.LastOrDefault();
 
 
-            return Ok(whereQuery);
+            //return Ok("Be at " + whereQuery.Select(a=> a.RestaurantAddress)+ " at " + whereQuery.Select(a=> a.TimeAtRestaurant));
+            return Ok("Be at " + assignedOrder.RestaurantAddress + "at " + assignedOrder.TimeAtRestaurant.ToString());
             
         }
 
+        //Driver accepted order
+        //Driver accepted order
         //Driver accepted order
         [Route("api/orders/accept/{orderId}")]
         [HttpPatch()]
@@ -83,16 +90,11 @@ namespace GoDeliverWebApp.Controllers
                 return BadRequest();
             }
 
-            order.State = "Waiting for driver";
-
+            order.State = "Waiting on Driver";
             _orderRepository.Save();
 
-            return Ok("The order will be sent to another driver");
+            return Ok("The restaurant will be notified of your choice..");
         }
-
-
-
-
 
         //Change state to delivered
         [Route("api/order/delivered/{orderid}")]
@@ -107,11 +109,9 @@ namespace GoDeliverWebApp.Controllers
             }
 
             order.State = "Delivered";
-
             _orderRepository.Save();
 
             return Ok("Order delivered");
-
         }
     }
 }

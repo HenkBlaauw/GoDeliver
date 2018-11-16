@@ -15,21 +15,16 @@ namespace GoDeliverWebApp.Controllers
 
         private InfoRepository _restaurantInfoRepository;
         GoDeliveryContext context = new GoDeliveryContext();
-        private InfoRepository _driverInfoRepository;
         private InfoRepository _orderRepository;
-
         private GoDeliveryContext _context;
+
         public RestaurantController()
         {
-
             _context = context;
             _orderRepository = new DataInfoRepository(context);
             _restaurantInfoRepository = new DataInfoRepository(context);
-
         }
-
-
-
+        
         [Route("api/orders")]
         [HttpGet()]
         public IHttpActionResult GetOrders()
@@ -48,22 +43,16 @@ namespace GoDeliverWebApp.Controllers
                                               CustomerAddress = b.CustomerAddress,
                                               TotalCost = b.TotalCost,
                                               CreatedAtDate = b.CreatedAtDate,
-                                              UpdatedAtDate = DateTime.UtcNow                                             
-
+                                              UpdatedAtDate = DateTime.UtcNow                
                                           };
-
-
+            
             return Ok(orders);
-
-
         }
-
-
+        
         [Route("api/restaurant/orders/accept/{orderid}")]
         [HttpPatch()]
         public IHttpActionResult ConfirmOrder([FromUri] int OrderId)
         {
-
             GoDeliveryContext context = new GoDeliveryContext();
             var currentOrder = _orderRepository.GetOrder(OrderId);
 
@@ -75,7 +64,10 @@ namespace GoDeliverWebApp.Controllers
             currentOrder.State = "Order confirmed";
             currentOrder.UpdatedAtDate = DateTime.UtcNow;
 
-            _orderRepository.Save();
+            if (!_orderRepository.Save())
+            {
+                return BadRequest();
+            };
 
             return Ok(currentOrder);
         }
@@ -96,7 +88,10 @@ namespace GoDeliverWebApp.Controllers
             currentOrder.State = "Order Denied";
             currentOrder.UpdatedAtDate = DateTime.UtcNow;
 
-            _orderRepository.Save();
+            if (!_orderRepository.Save())
+            {
+                return BadRequest();
+            };
 
             return Ok(currentOrder);
         }
@@ -114,7 +109,6 @@ namespace GoDeliverWebApp.Controllers
                 return BadRequest("The order you requested is empty");
             }
 
-
             currentOrder.DriverId = driverId;
             _orderRepository.Save();
 
@@ -126,7 +120,6 @@ namespace GoDeliverWebApp.Controllers
         [HttpPost()]
         public IHttpActionResult CreateRestaurant([FromBody]RestaurantInfoDto restaurantInfo)
         {
-
             var restaurantError = "Please look at the data and make sure it's not empty, incorrect, or has values that are the same!";
             Restaurant restaurant = new Restaurant();
 
@@ -142,15 +135,14 @@ namespace GoDeliverWebApp.Controllers
                 return StatusCode(HttpStatusCode.BadRequest);
             }
 
+            
 
-            restaurant.Adress = restaurantInfo.Adress;
             if (restaurantInfo.Adress == null || restaurantInfo.Adress.Length > 50)
             {
                 return StatusCode(HttpStatusCode.BadRequest);
             }
-
+            restaurant.Adress = restaurantInfo.Adress;
             restaurant.Foods = restaurantInfo.Foods;
-
             restaurant.CreatedAtDate = DateTime.Now;
             restaurant.UpdatedAtDate = DateTime.Now;
             
@@ -161,7 +153,7 @@ namespace GoDeliverWebApp.Controllers
                 return StatusCode(HttpStatusCode.BadRequest);
             }
 
-            return Ok(restaurant);
+            return Json(restaurant);
         }
     }
 }

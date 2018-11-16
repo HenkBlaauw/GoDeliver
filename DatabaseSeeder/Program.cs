@@ -15,11 +15,9 @@ namespace DatabaseSeeder
         static void Main(string[] args)
         {
             Console.WriteLine("Starting seeder");
-
             GoDeliveryContext dbContext = new GoDeliveryContext(DbConnectionString);
             GoDeliverWebApp.Migrations.Configuration seeder = new Configuration();
             seeder.SeedDatabase(dbContext);
-
             Console.WriteLine("Seeder SucSEEDED");
         }
     }

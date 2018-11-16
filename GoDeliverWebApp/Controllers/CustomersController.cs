@@ -20,12 +20,10 @@ namespace GoDeliverWebApp.Controllers
         private InfoRepository _orderRepository;
         private InfoRepository _restaurantInfoRepository;
         
-
         public CustomersController(InfoRepository customerInfoRepository)
         {
             _customerInfoRepository = customerInfoRepository;
         }
-
         private GoDeliveryContext _context;
         public CustomersController()
         {
@@ -35,27 +33,10 @@ namespace GoDeliverWebApp.Controllers
             _restaurantInfoRepository = new DataInfoRepository(context);
         }
 
-
-        // GET api/customers
-        //[Route("customers")]
-        //[HttpGet()]
-        //public IHttpActionResult GetCustomers()
-        //{
-        //    GoDeliveryContext context = new GoDeliveryContext();
-        //    IQueryable<CustomerDto> customers = from b in context.Customers
-        //                                        select new CustomerDto()
-        //                                        {
-        //                                            CustomerId = b.CustomerId,
-        //                                            Name = b.Name
-        //                                        };
-        //    return Ok(customers);
-        //}
-       
         [Route("customers")]
         [HttpPost()]
         public IHttpActionResult CreateCustomer([FromBody]CustomerForCreationDto CustomerInfo)
         {
-
             Customer customer = new Customer();
             if (CustomerInfo == null)
             {
@@ -82,7 +63,6 @@ namespace GoDeliverWebApp.Controllers
             customer.UpdatedAtDate = customer.CreatedAtDate;
 
             _customerInfoRepository.AddCustomer(customer);
-
             if (!_customerInfoRepository.Save())
             {
                 return null;
@@ -97,7 +77,6 @@ namespace GoDeliverWebApp.Controllers
         public IHttpActionResult GetRestaurants()
         {
             GoDeliveryContext context = new GoDeliveryContext();
-
             IQueryable<RestaurantDto> restaurants = from b in context.Restaurants
                                                 select new RestaurantDto()
                                                 {
@@ -118,35 +97,12 @@ namespace GoDeliverWebApp.Controllers
             
             return Json(foods);
         }
-                                   
-        //Add food to Order
-        //[Route("customers/addFood/{foodIds}")]
-        //[HttpPatch()]
-        //public IHttpActionResult AddFood([FromUri]string foodIds)
-        //{
-        //    //for (int i = 0; i < foodIds.Length; i++)
-        //    //{
-        //    //    var food = _restaurantInfoRepository.GetFood(foodId);
-        //    //    food4Order.Add(food);
-        //    //}
-        //   // return Json("Your food has been added to the order");
-        //    //Testing food4Order for recurring calls
-        //    return Json(food4Order);
-        //}
-
-
-
-
-
-
-
-
+       
         //Call when a customer orders food
         [Route("api/customers/createorder/{customerId}")]
         [HttpPost()]
         public IHttpActionResult CreateOrder([FromUri] int CustomerId, [FromBody]OrderCreationDto orderInfo)
         {
-           // var food4Order = new List<Food>();
             Order order = new Order();
             order.TotalCost = 0;
             ICollection<Food> food4Order = new List<Food>();
@@ -156,9 +112,8 @@ namespace GoDeliverWebApp.Controllers
             }
 
             var foodTest = orderInfo.FoodId;
-            foodTest.ToArray();
-
-
+           foodTest =  foodTest.ToArray();
+            
             foreach(int i in foodTest)
             {
                 food4Order.Add(_restaurantInfoRepository.GetFood(i));
@@ -166,15 +121,12 @@ namespace GoDeliverWebApp.Controllers
 
             order.CustomerId = CustomerId;
             order.Foods = food4Order;
-
-
+            
             foreach( Food food in  food4Order)
             {
                 order.TotalCost = order.TotalCost+  food4Order.Select(a => a.Cost).First();
             }
-
-
-
+            
             var value = order.Foods.First();
             var resId = Convert.ToInt32(value.RestaurantId);
             order.State = "Sent";
