@@ -14,15 +14,16 @@ namespace GoDeliverWebApp.Controllers
     {
         GoDeliveryContext context = new GoDeliveryContext();
         private InfoRepository _orderRepository;
-        
+       
         
         //Get order from restaurant
         [Route("api/drivers/orders/{driverid}")]
         [HttpGet()]
         public IHttpActionResult GetOrder([FromUri] int driverId)
         {
+           
             GoDeliveryContext context = new GoDeliveryContext();
-            
+            _orderRepository = new DataInfoRepository(context);
             IQueryable<OrderDto> orders = from b in context.Orders
                                           select new OrderDto()
                                           {
@@ -38,33 +39,31 @@ namespace GoDeliverWebApp.Controllers
                                               CreatedAtDate = b.CreatedAtDate,
                                               UpdatedAtDate = DateTime.UtcNow
                                           };
-
-
             if (orders == null)
             {
-                return BadRequest();
+                return BadRequest("There are no orders to complete!");
             }
 
             List<OrderDto> driverOrder = orders.Where(x => x.DriverId == driverId).ToList();
+            if(driverOrder == null)
+            {
+                return BadRequest("You have no orders to complete");
+            }
 
-            //var testOrder = orders.Where(a => a.DriverId.Equals(driverId));
-            //var driverOrders = _orderRepository.GetOrder();
             var assignedOrder = driverOrder.LastOrDefault();
-
-
-            //return Ok("Be at " + whereQuery.Select(a=> a.RestaurantAddress)+ " at " + whereQuery.Select(a=> a.TimeAtRestaurant));
-            return Ok("Be at " + assignedOrder.RestaurantAddress + "at " + assignedOrder.TimeAtRestaurant.ToString());
+            
+            return Json("Be at " + assignedOrder.RestaurantAddress + "at " + assignedOrder.TimeAtRestaurant.ToString());
             
         }
-
-        //Driver accepted order
-        //Driver accepted order
+        
         //Driver accepted order
         [Route("api/orders/accept/{orderId}")]
         [HttpPatch()]
         public IHttpActionResult AcceptOrder([FromUri]int orderId)
         {
-            Order order = _orderRepository.GetOrder(orderId);
+            GoDeliveryContext context = new GoDeliveryContext();
+            _orderRepository = new DataInfoRepository(context);
+            var order = _orderRepository.GetOrder(orderId);
              
             if (order == null)
             {
@@ -75,7 +74,7 @@ namespace GoDeliverWebApp.Controllers
 
             _orderRepository.Save();
 
-            return Ok("Be at "+ order.RestaurantAddress + " at " + order.TimeAtRestaurant+ ", and deliver the food to " + order.CustomerAddress);
+            return Json("Be at "+ order.RestaurantAddress + " at " + order.TimeAtRestaurant+ ", and deliver the food to " + order.CustomerAddress);
         }
 
         //Driver denies order
@@ -83,6 +82,9 @@ namespace GoDeliverWebApp.Controllers
         [HttpPatch()]
         public IHttpActionResult DenyOrder([FromUri]int orderId)
         {
+            GoDeliveryContext context = new GoDeliveryContext();
+            _orderRepository = new DataInfoRepository(context);
+
             Order order = _orderRepository.GetOrder(orderId);
 
             if (order == null)
@@ -93,7 +95,7 @@ namespace GoDeliverWebApp.Controllers
             order.State = "Waiting on Driver";
             _orderRepository.Save();
 
-            return Ok("The restaurant will be notified of your choice..");
+            return Json("The restaurant will be notified of your choice..");
         }
 
         //Change state to delivered
@@ -101,6 +103,8 @@ namespace GoDeliverWebApp.Controllers
         [HttpPatch()]
         public IHttpActionResult DeliveredOrder([FromUri] int orderId)
         {
+            GoDeliveryContext context = new GoDeliveryContext();
+            _orderRepository = new DataInfoRepository(context);
             Order order = _orderRepository.GetOrder(orderId);
 
             if (order == null)
@@ -111,7 +115,7 @@ namespace GoDeliverWebApp.Controllers
             order.State = "Delivered";
             _orderRepository.Save();
 
-            return Ok("Order delivered");
+            return Json("Order delivered");
         }
     }
 }

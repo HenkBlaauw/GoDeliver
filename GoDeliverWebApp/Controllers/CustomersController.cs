@@ -1,18 +1,14 @@
 ﻿using GoDeliverWebApp.Entities;
 using GoDeliverWebApp.Models;
 using GoDeliverWebApp.Services;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using System.Web.Http;
+
+
 namespace GoDeliverWebApp.Controllers
 {
-    
-
     public class CustomersController : ApiController
     {
         private InfoRepository _customerInfoRepository;
@@ -87,6 +83,7 @@ namespace GoDeliverWebApp.Controllers
             return Ok(restaurants.OrderBy( t=> t.Name));
         }
 
+        //Get Food for a restaurant
         [Route("api/restaurants/{restaurantId}/foods")]
         [HttpGet()]
         public IHttpActionResult GetFoodForRestaurant([FromUri] int restaurantId)
@@ -112,7 +109,7 @@ namespace GoDeliverWebApp.Controllers
             }
 
             var foodTest = orderInfo.FoodId;
-           foodTest =  foodTest.ToArray();
+            foodTest =  foodTest.ToArray();
             
             foreach(int i in foodTest)
             {
@@ -135,7 +132,9 @@ namespace GoDeliverWebApp.Controllers
             order.CustomerAddress = _restaurantInfoRepository.GetCustomer(CustomerId).Adress;
             order.UpdatedAtDate = DateTime.UtcNow;
             order.CreatedAtDate = DateTime.UtcNow;
+            order.RestaurantId = resId;
             order.TimeAtRestaurant = order.CreatedAtDate.AddMinutes(21);
+
             _orderRepository.AddOrder(order);
 
             if (!_orderRepository.Save())
@@ -143,7 +142,7 @@ namespace GoDeliverWebApp.Controllers
                 return BadRequest();
             }
           
-            return Json("The order has been sent to the restaurant. You will be notified about the order's progression");
+            return Ok("The order has been sent to the restaurant. You will be notified about the order's progression");
         }
     }
 }

@@ -25,9 +25,9 @@ namespace GoDeliverWebApp.Controllers
             _restaurantInfoRepository = new DataInfoRepository(context);
         }
         
-        [Route("api/orders")]
+        [Route("api/orders/{driverId}")]
         [HttpGet()]
-        public IHttpActionResult GetOrders()
+        public IHttpActionResult GetOrders([FromUri] int driverId)
         {
             GoDeliveryContext context = new GoDeliveryContext();
             IQueryable<OrderDto> orders = from b in context.Orders
@@ -39,6 +39,7 @@ namespace GoDeliverWebApp.Controllers
                                               RestaurantId = b.RestaurantId,
                                               TimeAtRestaurant = b.TimeAtRestaurant,
                                               State = b.State,
+                                              Foods = b.Foods,
                                               RestaurantAddress = b.RestaurantAddress,
                                               CustomerAddress = b.CustomerAddress,
                                               TotalCost = b.TotalCost,
@@ -66,10 +67,10 @@ namespace GoDeliverWebApp.Controllers
 
             if (!_orderRepository.Save())
             {
-                return BadRequest();
+                return BadRequest("There was a problem with your order.");
             };
 
-            return Ok(currentOrder);
+            return Ok("Have the order ready by " + currentOrder.TimeAtRestaurant);
         }
 
         [Route("api/restaurant/orders/deny/{orderid}")]
@@ -93,7 +94,7 @@ namespace GoDeliverWebApp.Controllers
                 return BadRequest();
             };
 
-            return Ok(currentOrder);
+            return Ok("The customer will be notified");
         }
 
 
@@ -112,7 +113,7 @@ namespace GoDeliverWebApp.Controllers
             currentOrder.DriverId = driverId;
             _orderRepository.Save();
 
-            return Ok("The driver you assigned will be notified of the order, and will be at the restaurant at: " + currentOrder.TimeAtRestaurant);
+            return Ok("The driver you assigned will be notified of the order, and should be at the restaurant at: " + currentOrder.TimeAtRestaurant);
         }
 
 
